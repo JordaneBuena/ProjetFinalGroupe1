@@ -1,59 +1,42 @@
 package com.apprest.scolaire.model;
 
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
 
 @Entity
-@RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class Course {
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class Classroom {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@NonNull
-	private Date start;
+	private String name;
 	
 	@NonNull
-	private Date end;
+	private List<Subject> subjectsExluded;
 	
 	@NonNull
-	private String day;
+	private int capacite;
 	
-	@NonNull
-	@OneToOne
-	private Teacher teacher;
-	
-	@NonNull
-	@OneToOne
-	private Classroom classroom;
-	
-	@NonNull
-	@OneToOne
-	private Subject subject;
-	
-	
-		
+
+	@ManyToOne
+	@JsonIgnoreProperties("classrooms")
+	private School school;
 	
 
 }

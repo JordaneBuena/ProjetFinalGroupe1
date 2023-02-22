@@ -1,59 +1,59 @@
 package com.apprest.scolaire.model;
 
-import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 
 @Entity
-@RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class Course {
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class School {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@NonNull
-	private Date start;
+	private String name;
 	
 	@NonNull
-	private Date end;
+	private String adresse;
 	
 	@NonNull
-	private String day;
+	private SchoolType type;
 	
 	@NonNull
-	@OneToOne
-	private Teacher teacher;
+	private String tel;
 	
-	@NonNull
-	@OneToOne
-	private Classroom classroom;
-	
-	@NonNull
-	@OneToOne
-	private Subject subject;
+
+	@OneToMany(mappedBy = "school")
+	private List<Subject> subjects;
 	
 	
-		
+
+	@OneToMany(mappedBy = "school")
+	private List<Classroom> classrooms;
+	
+//	@NonNull
+//	@OneToMany
+//	private List<Teacher> teachers;
+	
+	
+
+	
+	
+	
 	
 
 }
