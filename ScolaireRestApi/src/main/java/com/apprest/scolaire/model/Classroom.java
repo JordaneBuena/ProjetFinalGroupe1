@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -28,6 +29,7 @@ public class Classroom {
 	private String name;
 	
 	@NonNull
+	@OneToMany
 	private List<Subject> subjectsExluded;
 	
 	@NonNull

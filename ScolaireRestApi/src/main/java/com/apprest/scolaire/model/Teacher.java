@@ -33,11 +33,11 @@ public class Teacher {
 	@NonNull
 	private Date dateOfBirth;
 	
-	@OneToOne
+	@OneToOne(mappedBy="principalTeacher")
 	private Klass klass;
 	
-	@OneToMany
-	private Course course;
+	@OneToMany(mappedBy="teacher")
+	private List<Course> courses;
 	
 	@NonNull
 	@OneToOne
