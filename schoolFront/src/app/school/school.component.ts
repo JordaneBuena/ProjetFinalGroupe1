@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {SchoolModel} from "../../model/school.model";
+import {SchoolService} from "../school.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-school',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./school.component.css']
 })
 export class SchoolComponent {
+  @Input()
+  school: SchoolModel | undefined;
+
+  constructor() {
+  }
+
+
+
 
 }

@@ -1,4 +1,4 @@
 export enum TypeSchool{
-  COLLEGE,
-  LYCEE
+  COLLEGE = 'Collège',
+  LYCEE = 'Lycée'
 }
