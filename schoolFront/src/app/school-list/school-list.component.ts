@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-school-list',
+  templateUrl: './school-list.component.html',
+  styleUrls: ['./school-list.component.css']
+})
+export class SchoolListComponent {
+
+}
