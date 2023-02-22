@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {SchoolModel} from "../model/school.model";
 import {TypeSchool} from "../model/typeSchool.enum";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,9 @@ export class SchoolService {
 
   findOne(id : number):SchoolModel {
     return this.schools[id];
+  }
+
+  add(school: SchoolModel): Observable<SchoolModel> {
+    return Observable.prototype
   }
 }

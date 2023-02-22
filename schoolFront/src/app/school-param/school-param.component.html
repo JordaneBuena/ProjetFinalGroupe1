@@ -1,4 +1,12 @@
 <h1>Paramétrage</h1>
+
+<ul *ngIf="formSubmitted">
+  <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
+  <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
+  <li *ngIf="myForm.controls['typeSchool'].errors?.['required']">Un type est requis</li>
+  <li *ngIf="myForm.controls['phone'].errors?.['required']">Un numero de telephone est requis</li>
+</ul>
+
 <form [formGroup]="myForm" (ngSubmit)="submitForm()">
   <div class="form-text">
     <label for="name">Nom de l'établissement</label>
@@ -19,4 +27,5 @@
     <label for="phone">Téléphone</label>
     <input type="text" id="phone" formControlName="phone">
   </div>
+  <button type="submit">Ajouter</button>
 </form>
