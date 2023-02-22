@@ -1,0 +1,30 @@
+<p>school-detail works!</p>
+<div class="card">
+  <h4 class="card-header">{{school?.name}} </h4>
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item">{{school?.address}} </li>
+      <li class="list-group-item">{{school?.typeSchool}} </li>
+      <li class="list-group-item">{{school?.phone}} </li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item">Nombre de professeurs :
+        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+          Gérer les professeurs</button>
+      </li>
+      <li class="list-group-item">Nombre de matières :
+        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+          Gérer les maières</button>
+      </li>
+      <li class="list-group-item">Nombre de classes :
+        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+          Gérer les classes</button>
+      </li>
+      <li class="list-group-item">Nombre de salles de classe :
+        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+          Gérer les classes</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
