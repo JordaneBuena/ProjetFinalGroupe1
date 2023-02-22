@@ -9,7 +9,7 @@ export class SchoolService {
 
   private schools: SchoolModel[]=[
     {
-      id : 1,
+      id : 0,
       name :"collegeFouFouFou",
       address : "15 rue kjbdsf 34500 jkdnf",
       typeSchool : TypeSchool.COLLEGE,
@@ -17,7 +17,7 @@ export class SchoolService {
       logo : "image"
     },
     {
-      id : 2,
+      id : 1,
       name :"Lyceekjhfdiuh",
       address : "15 rue kjbdsf 34500 jkdnf",
       typeSchool : TypeSchool.LYCEE,
