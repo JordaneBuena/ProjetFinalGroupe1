@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -46,25 +47,29 @@ public class Course {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="teacher_id")
-	@JsonIgnoreProperties("subjects")
+//	@JsonIgnoreProperties("subjects")
+	@JsonIgnore
 	private Teacher teacher;
 	
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="classroom_id")
-	@JsonIgnoreProperties("courses")
+//	@JsonIgnoreProperties("courses")
+	@JsonIgnore
 	private Classroom classroom;
 	
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="subject_id")
-	@JsonIgnoreProperties("courses")
+//	@JsonIgnoreProperties("courses")
+	@JsonIgnore
 	private Subject subject;
 	
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="planning_id")
-	@JsonIgnoreProperties("courses")
+//	@JsonIgnoreProperties("courses")
+	@JsonIgnore
 	private Planning planning;
 	
 	

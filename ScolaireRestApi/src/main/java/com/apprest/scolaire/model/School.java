@@ -2,6 +2,8 @@ package com.apprest.scolaire.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -42,12 +44,19 @@ public class School {
 	
 	@NonNull
 	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Subject> subjects;
 	
 	
 	@NonNull
 	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Classroom> classrooms;
+	
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Teacher> teachers;
 	
 
 }
