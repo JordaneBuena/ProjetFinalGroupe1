@@ -1,30 +1,36 @@
-<p>school-detail works!</p>
-<div class="card">
+<div class="card w-50">
   <h4 class="card-header">{{school?.name}} </h4>
   <div class="card-body">
     <ul class="list-group">
-      <li class="list-group-item">{{school?.address}} </li>
-      <li class="list-group-item">{{school?.typeSchool}} </li>
-      <li class="list-group-item">{{school?.phone}} </li>
+      <li class="list-group-item">
+        {{school?.address}}<br>
+        {{school?.typeSchool}}<br>
+        {{school?.phone}}<br>
+      </li>
     </ul>
+    <br>
     <ul class="list-group">
       <li class="list-group-item">Nombre de professeurs :
-        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+        <button type="button" class="btn btn-info" routerLink="/schools/{{school?.id}}/teachers">
           Gérer les professeurs</button>
       </li>
-      <li class="list-group-item">Nombre de matières :
-        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+      <li class="list-group-item">Nombre de matières :<br>
+        <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
           Gérer les maières</button>
       </li>
-      <li class="list-group-item">Nombre de classes :
-        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+      <li class="list-group-item">Nombre de classes :<br>
+        <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
           Gérer les classes</button>
       </li>
-      <li class="list-group-item">Nombre de salles de classe :
-        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
-          Gérer les classes</button>
+      <li class="list-group-item">Nombre de salles de classe :<br>
+        <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
+          Gérer les salles</button>
       </li>
     </ul>
   </div>
+</div>
+<br>
+<div>
+  <button type="button" class="btn btn-outline-info" routerLink="/schools">Retour liste établissement</button>
 </div>
 

@@ -17,7 +17,7 @@ export class SchoolDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get("id") || "";
+    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
     if (id != '') {
       this.school = this.sServ.findOne(+id);
     }
