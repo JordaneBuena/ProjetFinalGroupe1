@@ -1,7 +1,11 @@
 package com.apprest.scolaire.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,15 +35,18 @@ public class Teacher {
 	private String firstName;
 	
 	@NonNull
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	
+	@JsonIgnoreProperties("principalTeacher")
 	@OneToOne(mappedBy="principalTeacher")
 	private Klass klass;
 	
+	@JsonIgnoreProperties("teacher, classroom, subject")
 	@OneToMany(mappedBy="teacher")
 	private List<Course> courses;
 	
 	@NonNull
+	@JsonIgnoreProperties("subjects, classrooms")
 	@OneToOne
 	private School school;
 }

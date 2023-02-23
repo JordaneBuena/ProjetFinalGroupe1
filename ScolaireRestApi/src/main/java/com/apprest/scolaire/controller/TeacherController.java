@@ -1,5 +1,10 @@
 package com.apprest.scolaire.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.apprest.scolaire.dao.SchoolDao;
 import com.apprest.scolaire.dao.TeacherDao;
 import com.apprest.scolaire.model.School;
 import com.apprest.scolaire.model.SchoolType;
@@ -33,9 +40,19 @@ public class TeacherController {
 	@Autowired
 	TeacherDao teacherDao;
 	
+	@Autowired
+	SchoolDao schoolDao;
+	
+	
+	
 	@GetMapping({"/", ""})
-	public ResponseEntity<List<Teacher>> getAll() {
-		Teacher teacher = new Teacher("lastName", "FirstName", new Date(13/05/1949), new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222"));
+	public ResponseEntity<List<Teacher>> getAll() throws ParseException {
+		School school = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
+		schoolDao.save(school);
+		//Date dob1 = new Date(88, Calendar.SEPTEMBER, 19);
+		LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
+		teacherDao.save(new Teacher("toto", "FirstName", dob, school));
+		
 		return new ResponseEntity<List<Teacher>>(teacherDao.findAll(), HttpStatus.OK);
 	}
 	

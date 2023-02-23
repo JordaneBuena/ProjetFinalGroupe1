@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class School {
 	
