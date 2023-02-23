@@ -1,4 +1,3 @@
-<p>school-detail works!</p>
 <div class="card">
   <h4 class="card-header">{{school?.name}} </h4>
   <div class="card-body">
@@ -9,7 +8,7 @@
     </ul>
     <ul class="list-group">
       <li class="list-group-item">Nombre de professeurs :
-        <button type="button" class="btn btn-info" routerLink="/schools/param/{{school?.id}}">
+        <button type="button" class="btn btn-info" routerLink="/schools/{{school?.id}}/teachers">
           Gérer les professeurs</button>
       </li>
       <li class="list-group-item">Nombre de matières :

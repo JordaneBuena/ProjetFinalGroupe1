@@ -1,0 +1,12 @@
+<h2>Liste des professeurs</h2>
+
+
+
+<div *ngIf="teachers.length < 1">
+  Pas de professeur
+</div>
+<div *ngIf="teachers.length > 0">
+  <div class="card-columns">
+    <app-teacher *ngFor="let t of teachers" [teacher]="t" (click)="goToItems(t.id)"></app-teacher>
+  </div>
+</div>
