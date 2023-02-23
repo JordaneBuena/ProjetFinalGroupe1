@@ -35,8 +35,7 @@ public class Classroom {
 	private String name;
 	
 	@NonNull
-	@ManyToMany
-	@JoinColumn(name="subject_id")
+	@ManyToMany(mappedBy = "classroomsExcluded", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Subject> subjectsExcluded;
 	
