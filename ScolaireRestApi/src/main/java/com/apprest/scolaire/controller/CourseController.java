@@ -1,5 +1,6 @@
 package com.apprest.scolaire.controller;
 
+
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ import com.apprest.scolaire.model.Course;
 
 
 
+
 @RestController
 @RequestMapping("/cours")
 @CrossOrigin
@@ -31,10 +33,8 @@ public class CourseController {
 	CourseDao courseDao;
 	
 
-	
-	
 	@GetMapping({"/", ""})
-	public ResponseEntity<List<Course>> getAll() throws ParseException {
+	public ResponseEntity<List<Course>> getAll(){
 		//School school = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
 		//schoolDao.save(school);
 		//LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
@@ -62,11 +62,19 @@ public class CourseController {
 		return new ResponseEntity<Course>(course, HttpStatus.CREATED);
 	}
 	
-	@PutMapping({"/{id}"})
-	public ResponseEntity<Course> addOne(@PathVariable Integer id, @RequestBody Course course){
-		Course course1 = this.courseDao.findById(id).get();
-		this.courseDao.save(course);
-		return new ResponseEntity<Course>(course1, HttpStatus.CREATED);
+	// se pose la question des autres param en jsonignore
+	
+	@PostMapping("/{id}")
+	public ResponseEntity<Course> editOne(@PathVariable int id, @RequestBody Course course){
+		Course c = this.courseDao.findById(id).get();
+		c.setDay(course.getDay());
+		c.setStart(course.getStart());
+		c.setEnd(course.getEnd());
+
+		this.courseDao.save(c);
+		return new ResponseEntity<Course>(c,HttpStatus.CREATED);	
 	}
+	
+
 
 }

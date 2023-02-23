@@ -2,9 +2,12 @@ package com.apprest.scolaire.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,17 +37,19 @@ public class Classroom {
 	@NonNull
 	@ManyToMany
 	@JoinColumn(name="subject_id")
+	@JsonIgnore
 	private List<Subject> subjectsExcluded;
 	
 
 	private int capacite;
 	
-	@OneToMany(mappedBy = "classroom")
+	@OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Course> courses;
 	
 
 	@ManyToOne
-	@JsonIgnoreProperties("classrooms")
+	@JsonIgnoreProperties({"name","adresse","type","subjects","classrooms"})
 	private School school;
 	
 
