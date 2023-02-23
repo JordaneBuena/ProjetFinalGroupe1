@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Teacher} from "../../model/teacher.model";
-import {TeacherService} from "../teacher.service";
+import {SchoolService} from "../school.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-teacher-list',
@@ -11,11 +12,15 @@ export class TeacherListComponent implements OnInit{
 
   teachers: Teacher[] = []
 
-  constructor(private teachServ: TeacherService) {
+  constructor(private schoolServ: SchoolService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.teachServ.findOne(1).subscribe(v => this.teachers = [v,v])
+    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    if (id != '') {
+      this.schoolServ.findAllTeacherBySchool(+id).subscribe(v => this.teachers = v)
+    }
   }
 
 }

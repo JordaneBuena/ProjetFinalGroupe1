@@ -3,10 +3,7 @@
   <h1 class="card-header">Paramétrage</h1>
   <div class="text-danger">
     <ul *ngIf="!formSubmitted">
-      <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
-      <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
-      <li *ngIf="myForm.controls['type'].errors?.['required']">Un type est requis</li>
-      <li *ngIf="myForm.controls['phone'].errors?.['required']">Un numero de telephone est requis</li>
+      <li></li>
     </ul>
   </div>
   <form [formGroup]="myForm" (ngSubmit)="submitForm()">

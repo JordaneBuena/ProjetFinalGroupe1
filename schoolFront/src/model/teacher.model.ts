@@ -5,5 +5,9 @@ export interface Teacher {
   lastName: string,
   firstName: string,
   dateOfBirth: Date,
+  principaleKlass: {
+    id: number,
+    name: string
+  }
   subjects: Subject[]
 }

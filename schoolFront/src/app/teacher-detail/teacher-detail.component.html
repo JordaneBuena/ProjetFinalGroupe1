@@ -3,6 +3,12 @@
 <div class="card w-50">
   <h4 class="card-header">{{teacher?.lastName}} {{teacher?.firstName}}</h4>
   <div class="card-body">
+    <div class="card-text">
+      Né(e) le : {{teacher?.dateOfBirth | date:'fullDate'}}
+    </div>
+    <div class="card-text">
+      Est le professeur principal de la classe : {{teacher?.principaleKlass?.name}}
+    </div>
     <ul class="list-group">
       <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.colour}" class="list-group-item">
         {{s.name}}<br>
