@@ -25,5 +25,5 @@ export class SubjectService {
   getOne(id : number) {
     return this.subjects[id];
   }
-  
+
 }

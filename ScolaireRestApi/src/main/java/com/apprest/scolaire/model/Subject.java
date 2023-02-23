@@ -36,11 +36,12 @@ public class Subject {
 	private String color;
 	
 	@NonNull
-	@ManyToMany(mappedBy = "subjectsExcluded", cascade = CascadeType.ALL)
+	@ManyToMany
+	@JoinColumn(name="classroom_id")
 	private List<Classroom> classroomsExcluded;
 	
 	@NonNull
-	@OneToMany(mappedBy = "subject")
+	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
 	private List<Course> courses;
 	
 	@NonNull

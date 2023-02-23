@@ -15,6 +15,8 @@ export class SchoolParamComponent implements OnInit{
   school: SchoolModel | undefined
   formSubmitted: boolean = false
 
+  id: string | undefined
+
   constructor(private fb: FormBuilder,
               private sServ: SchoolService,
               private activatedRoute: ActivatedRoute,
@@ -23,22 +25,28 @@ export class SchoolParamComponent implements OnInit{
   submitForm(){
     this.formSubmitted = true
     if (this.myForm.valid) {
-      this.sServ.add(this.myForm.value)
-        .subscribe(s =>
-          this.router.navigateByUrl('/schools'))
+      if (this.id !== '-1') {
+        this.sServ.add(this.myForm.value)
+          .subscribe(s =>
+            this.router.navigateByUrl('/schools'))
+      } else {
+        this.sServ.modify(this.myForm.value)
+          .subscribe(s =>
+            this.router.navigateByUrl('/schools'))
+      }
     }
   };
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
-    if (id != '') {
-      this.school = this.sServ.findOne(+id);
+    this.id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    if (this.id != '') {
+      this.sServ.findOne(+this.id).subscribe(v => this.school = v)
     }
 
     this.myForm = this.fb.group({
       name: [this.school?.name || '', Validators.required],
       address: [this.school?.address || '', Validators.required],
-      typeSchool: [this.school?.typeSchool || '', Validators.required],
+      type: [this.school?.type || '', Validators.required],
       phone: [this.school?.phone || '', Validators.required]
     })
   }
