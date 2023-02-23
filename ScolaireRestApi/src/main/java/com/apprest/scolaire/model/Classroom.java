@@ -8,16 +8,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class Classroom {
 	
@@ -29,11 +32,15 @@ public class Classroom {
 	private String name;
 	
 	@NonNull
-	@OneToMany
-	private List<Subject> subjectsExluded;
+	@ManyToMany
+	@JoinColumn(name="subject_id")
+	private List<Subject> subjectsExcluded;
 	
-	@NonNull
+
 	private int capacite;
+	
+	@OneToMany(mappedBy = "classroom")
+	private List<Course> courses;
 	
 
 	@ManyToOne

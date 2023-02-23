@@ -2,7 +2,10 @@ package com.apprest.scolaire.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class School {
@@ -32,29 +34,20 @@ public class School {
 	private String adresse;
 	
 	@NonNull
+	@Enumerated(EnumType.STRING)
 	private SchoolType type;
 	
 	@NonNull
 	private String tel;
 	
-
-	@OneToMany(mappedBy = "school")
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
 	private List<Subject> subjects;
 	
 	
-
-	@OneToMany(mappedBy = "school")
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
 	private List<Classroom> classrooms;
-	
-//	@NonNull
-//	@OneToMany
-//	private List<Teacher> teachers;
-	
-	
-
-	
-	
-	
 	
 
 }

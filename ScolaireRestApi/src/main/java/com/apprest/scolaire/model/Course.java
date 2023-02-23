@@ -1,5 +1,6 @@
 package com.apprest.scolaire.model;
 
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -32,25 +35,37 @@ public class Course {
 	private int id;
 	
 	@NonNull
-	private Date start;
+	private LocalTime start;
 	
 	@NonNull
-	private Date end;
+	private LocalTime end;
 	
 	@NonNull
 	private String day;
 	
 	@NonNull
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="teacher_id")
+	@JsonIgnoreProperties("subjects")
 	private Teacher teacher;
 	
 	@NonNull
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="classroom_id")
+	@JsonIgnoreProperties("courses")
 	private Classroom classroom;
 	
 	@NonNull
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="subject_id")
+	@JsonIgnoreProperties("courses")
 	private Subject subject;
+	
+	@NonNull
+	@ManyToOne
+	@JoinColumn(name="planning_id")
+	@JsonIgnoreProperties("courses")
+	private Planning planning;
 	
 	
 		

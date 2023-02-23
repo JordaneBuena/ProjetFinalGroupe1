@@ -1,10 +1,13 @@
 package com.apprest.scolaire.model;
 
+import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,13 +29,13 @@ public class Klass {
 	@NonNull
 	private String name;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "klass")
 	private Planning planning;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "principaleKlass")
 	private Teacher principalTeacher;
 	
-	@OneToOne
-	private School school;
+//	@OneToOne
+//	private School school;
 
 }
