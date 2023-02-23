@@ -12,10 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class SchoolParamComponent implements OnInit{
 
   myForm!: FormGroup;
-  school: SchoolModel | undefined
+  school!: SchoolModel
   formSubmitted: boolean = false
-
-  id: string | undefined
 
   constructor(private fb: FormBuilder,
               private sServ: SchoolService,
@@ -25,11 +23,14 @@ export class SchoolParamComponent implements OnInit{
   submitForm(){
     this.formSubmitted = true
     if (this.myForm.valid) {
-      if (this.id !== '-1') {
+      if (!this.school) {
         this.sServ.add(this.myForm.value)
           .subscribe(s =>
             this.router.navigateByUrl('/schools'))
       } else {
+        let schoolToUpdate = this.myForm.value
+        console.log(schoolToUpdate)
+        schoolToUpdate.id = this.school.id
         this.sServ.modify(this.myForm.value)
           .subscribe(s =>
             this.router.navigateByUrl('/schools'))
@@ -38,10 +39,17 @@ export class SchoolParamComponent implements OnInit{
   };
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
-    if (this.id != '') {
-      this.sServ.findOne(+this.id).subscribe(v => this.school = v)
+    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    if (id != '') {
+      this.sServ.findOne(+id).subscribe(v => {
+        this.school = v
+        this.myForm.get('name')?.setValue(this.school.name)
+        this.myForm.get('address')?.setValue(this.school.address)
+        this.myForm.get('type')?.setValue(this.school.type)
+        this.myForm.get('phone')?.setValue(this.school.phone)
+      })
     }
+
 
     this.myForm = this.fb.group({
       name: [this.school?.name || '', Validators.required],

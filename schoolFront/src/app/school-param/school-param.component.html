@@ -2,7 +2,7 @@
 
   <h1 class="card-header">Paramétrage</h1>
   <div class="text-danger">
-    <ul *ngIf="!formSubmitted">
+    <ul *ngIf="formSubmitted">
       <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
       <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
       <li *ngIf="myForm.controls['type'].errors?.['required']">Un type est requis</li>
@@ -20,7 +20,7 @@
         <input type="text" id="address" formControlName="address">
       </div>
       <div class="group">
-        <label for="type">Type Etablissement</label>
+        <label class="form-text" for="type">Type Etablissement</label>
         <select id="type" formControlName="type">
           <option value='COLLEGE'>College</option>
           <option value='LYCEE'>Lycee</option>
@@ -32,8 +32,8 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn btn-outline-info" *ngIf="!school" type="submit" routerLink="/schools">Ajouter</button>
-      <button class="btn btn-outline-primary" *ngIf="school" type="submit" routerLink="/schools/{{school.id}}">Modifier</button>
+      <button class="btn btn-outline-info" *ngIf="!school" type="submit">Ajouter</button>
+      <button class="btn btn-outline-primary" *ngIf="school" type="submit">Modifier</button>
     </div>
   </form>
 </div>
