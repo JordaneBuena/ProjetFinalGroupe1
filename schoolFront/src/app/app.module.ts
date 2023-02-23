@@ -14,6 +14,7 @@ import {TeacherListComponent} from './teacher-list/teacher-list.component';
 import {TeacherComponent} from './teacher/teacher.component';
 import {TeacherDetailComponent} from './teacher-detail/teacher-detail.component';
 import {TeacherAddComponent} from './teacher-add/teacher-add.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
@@ -40,7 +41,8 @@ const routes: Routes = [
     AppRoutingModule,
     NgbModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@
     <ul *ngIf="!formSubmitted">
       <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
       <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
-      <li *ngIf="myForm.controls['typeSchool'].errors?.['required']">Un type est requis</li>
+      <li *ngIf="myForm.controls['type'].errors?.['required']">Un type est requis</li>
       <li *ngIf="myForm.controls['phone'].errors?.['required']">Un numero de telephone est requis</li>
     </ul>
   </div>
@@ -20,8 +20,8 @@
         <input type="text" id="address" formControlName="address">
       </div>
       <div class="group">
-        <label for="typeSchool">Type Etablissement</label>
-        <select id="typeSchool" formControlName="typeSchool">
+        <label for="type">Type Etablissement</label>
+        <select id="type" formControlName="type">
           <option value='COLLEGE'>College</option>
           <option value='LYCEE'>Lycee</option>
         </select>
