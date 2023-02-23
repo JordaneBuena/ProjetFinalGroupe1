@@ -1,31 +1,39 @@
-<h1>Paramétrage</h1>
+<div class="card w-50">
 
-<ul *ngIf="formSubmitted">
-  <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
-  <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
-  <li *ngIf="myForm.controls['typeSchool'].errors?.['required']">Un type est requis</li>
-  <li *ngIf="myForm.controls['phone'].errors?.['required']">Un numero de telephone est requis</li>
-</ul>
-
-<form [formGroup]="myForm" (ngSubmit)="submitForm()">
-  <div class="form-text">
-    <label for="name">Nom de l'établissement</label>
-    <input type="text" id="name" formControlName="name">
+  <h1 class="card-header">Paramétrage</h1>
+  <div class="text-danger">
+    <ul *ngIf="!formSubmitted">
+      <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
+      <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
+      <li *ngIf="myForm.controls['typeSchool'].errors?.['required']">Un type est requis</li>
+      <li *ngIf="myForm.controls['phone'].errors?.['required']">Un numero de telephone est requis</li>
+    </ul>
   </div>
-  <div class="form-text">
-    <label for="address">Adresse</label>
-    <input type="text" id="address" formControlName="address">
-  </div>
-  <div class="group">
-    <label for="typeSchool">Type Etablissement</label>
-    <select id="typeSchool" formControlName="typeSchool">
-      <option value='COLLEGE'>College</option>
-      <option value='LYCEE'>Lycee</option>
-    </select>
-  </div>
-  <div class="form-text">
-    <label for="phone">Téléphone</label>
-    <input type="text" id="phone" formControlName="phone">
-  </div>
-  <button type="submit">Ajouter</button>
-</form>
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="card-body">
+      <div class="form-text">
+        <label for="name">Nom de l'établissement</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
+      <div class="form-text">
+        <label for="address">Adresse</label>
+        <input type="text" id="address" formControlName="address">
+      </div>
+      <div class="group">
+        <label for="typeSchool">Type Etablissement</label>
+        <select id="typeSchool" formControlName="typeSchool">
+          <option value='COLLEGE'>College</option>
+          <option value='LYCEE'>Lycee</option>
+        </select>
+      </div>
+      <div class="form-text">
+        <label for="phone">Téléphone</label>
+        <input type="text" id="phone" formControlName="phone">
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-outline-info" *ngIf="!school" type="submit" routerLink="/schools">Ajouter</button>
+      <button class="btn btn-outline-primary" *ngIf="school" type="submit" routerLink="/schools/{{school.id}}">Modifier</button>
+    </div>
+  </form>
+</div>
