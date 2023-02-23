@@ -1,1 +1,16 @@
-<p>teacher-detail works!</p>
+<h2>Détails du professeur</h2>
+
+<div class="card w-50">
+  <h4 class="card-header">{{teacher?.lastName}} {{teacher?.firstName}}</h4>
+  <div class="card-body">
+    <ul class="list-group">
+      <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.colour}" class="list-group-item">
+        {{s.name}}<br>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<div>
+  <button type="button" class="btn btn-outline-info" routerLink="../">Retour vue etablissement</button>
+</div>

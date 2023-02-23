@@ -12,7 +12,6 @@ export class SchoolService {
 
   url = `${environment.urlApi}${environment.schoolSuffix}`
 
-  private schools: SchoolModel[]= []
   constructor(private http: HttpClient) { }
 
 
