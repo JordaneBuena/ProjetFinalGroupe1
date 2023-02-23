@@ -1,6 +1,5 @@
 package com.apprest.scolaire.model;
 
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

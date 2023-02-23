@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 		@OneToMany
 		private List<Course> courses;
 		
-		@OneToOne
+		@OneToOne(mappedBy="klass")
 		private Klass klass;
 		
 

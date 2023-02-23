@@ -1,14 +1,10 @@
 package com.apprest.scolaire.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.apprest.scolaire.dao.SchoolDao;
 import com.apprest.scolaire.dao.TeacherDao;
 import com.apprest.scolaire.model.School;
@@ -33,7 +27,7 @@ import com.apprest.scolaire.model.Teacher;
 
 
 @RestController
-@RequestMapping("/teacher")
+@RequestMapping("/professeur")
 @CrossOrigin
 public class TeacherController {
 	
