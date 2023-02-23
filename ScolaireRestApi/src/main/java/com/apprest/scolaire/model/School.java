@@ -33,14 +33,14 @@ public class School {
 	private String name;
 	
 	@NonNull
-	private String adresse;
+	private String address;
 	
 	@NonNull
 	@Enumerated(EnumType.STRING)
 	private SchoolType type;
 	
 	@NonNull
-	private String tel;
+	private String phone;
 	
 	@NonNull
 	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
