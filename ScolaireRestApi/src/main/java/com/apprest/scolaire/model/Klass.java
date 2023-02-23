@@ -2,6 +2,8 @@ package com.apprest.scolaire.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,9 +32,11 @@ public class Klass {
 	private String name;
 	
 	@OneToOne(mappedBy = "klass")
+	@JsonIgnore
 	private Planning planning;
 	
 	@OneToOne(mappedBy = "principaleKlass")
+	@JsonIgnore
 	private Teacher principalTeacher;
 	
 //	@OneToOne

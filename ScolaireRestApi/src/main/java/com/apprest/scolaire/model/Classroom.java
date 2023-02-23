@@ -34,10 +34,12 @@ public class Classroom {
 	@NonNull
 	private String name;
 	
-	@NonNull
-	@ManyToMany(mappedBy = "classroomsExcluded", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Subject> subjectsExcluded;
+//	@NonNull
+//	@ManyToMany(fetch = FetchType.LAZY,
+//			cascade = {CascadeType.PERSIST,CascadeType.MERGE},
+//	mappedBy = "classroomsExcluded")
+//	@JsonIgnore
+//	private List<Subject> subjectsExcluded;
 	
 
 	private int capacite;
@@ -48,7 +50,7 @@ public class Classroom {
 	
 
 	@ManyToOne
-	@JsonIgnoreProperties({"name","adresse","type","subjects","classrooms"})
+	@JsonIgnoreProperties({"name","address","type","phone","subjects","classrooms"})
 	private School school;
 	
 

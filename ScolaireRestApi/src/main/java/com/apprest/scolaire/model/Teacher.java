@@ -3,6 +3,7 @@ package com.apprest.scolaire.model;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -45,10 +46,11 @@ public class Teacher {
 	
 	
 	@OneToMany(mappedBy = "teacher")
+	@JsonIgnore
 	private List<Course> courses;
 	
 	@NonNull
 	@ManyToOne
-	@JsonIgnoreProperties("teachers")
+	@JsonIgnore
 	private School school;
 }

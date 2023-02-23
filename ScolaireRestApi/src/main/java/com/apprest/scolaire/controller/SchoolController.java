@@ -34,6 +34,9 @@ public class SchoolController {
 	@Autowired
 	SchoolDao sdao;
 	
+	@Autowired
+	TeacherDao teacherDao;
+	
 	
 	@GetMapping({"","/"})
 	public ResponseEntity<List<School>> findAll(){
@@ -46,6 +49,10 @@ public class SchoolController {
 		return optionCond.isPresent() ? new ResponseEntity<School>(optionCond.get(), HttpStatus.OK)
 				: new ResponseEntity<School>(HttpStatus.NOT_FOUND);
 	}
+	
+	@GetMapping("/{id}/professeurs")
+	public ResponseEntity<List<Teacher>> findTeachersBySchoolId(@PathVariable Integer id) {
+		return new ResponseEntity<List<Teacher>>(teacherDao.findByIdSchool(id), HttpStatus.OK);}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteOne(@PathVariable Integer id) { 
@@ -63,9 +70,9 @@ public class SchoolController {
 	public ResponseEntity<School> editOne(@PathVariable int id, @RequestBody School school){
 		School s = this.sdao.findById(id).get();
 		s.setName(school.getName());
-		s.setAdresse(school.getAdresse());
+		s.setAddress(school.getAddress());
 		s.setType(school.getType());
-		s.setTel(school.getTel());
+		s.setPhone(school.getPhone());
 	
 		this.sdao.save(s);
 		return new ResponseEntity<School>(s,HttpStatus.CREATED);	
