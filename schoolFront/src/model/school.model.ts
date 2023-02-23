@@ -4,7 +4,7 @@ export interface SchoolModel {
   id : number,
   name : string;
   address : string;
-  typeSchool : TypeSchool;
+  type : TypeSchool;
   phone : string;
   logo : string;
 

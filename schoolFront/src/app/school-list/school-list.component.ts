@@ -13,7 +13,7 @@ export class SchoolListComponent implements OnInit{
   constructor(private sServ : SchoolService) {}
 
   ngOnInit(): void {
-    this.schoolList = this.sServ.findAll();
+    this.sServ.findAll().subscribe(v => this.schoolList = v);
   }
 
 
