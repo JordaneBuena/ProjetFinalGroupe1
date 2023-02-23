@@ -14,6 +14,9 @@ import {TeacherListComponent} from './teacher-list/teacher-list.component';
 import {TeacherComponent} from './teacher/teacher.component';
 import {TeacherDetailComponent} from './teacher-detail/teacher-detail.component';
 import {TeacherAddComponent} from './teacher-add/teacher-add.component';
+import { SubjectComponent } from './subject/subject.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
+import { SubjectAddComponent } from './subject-add/subject-add.component';
 
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
@@ -21,6 +24,7 @@ const routes: Routes = [
   {path: 'schools/:sId', component: SchoolDetailComponent},
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
   {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
+  {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
 
 @NgModule({
@@ -33,7 +37,10 @@ const routes: Routes = [
     TeacherListComponent,
     TeacherComponent,
     TeacherDetailComponent,
-    TeacherAddComponent
+    TeacherAddComponent,
+    SubjectComponent,
+    SubjectListComponent,
+    SubjectAddComponent
   ],
   imports: [
     BrowserModule,

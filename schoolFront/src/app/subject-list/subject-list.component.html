@@ -1,0 +1,19 @@
+<h1>Liste des matières</h1>
+
+
+<div class="card w-50">
+  <div class="card-body">
+
+    <div *ngIf="subjects.length < 1">
+      Pas de Matière
+    </div>
+    <div *ngIf="subjects.length > 0">
+      <app-subject *ngFor="let sub of subjects" [subject]="sub"> </app-subject>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
+
+    <button type="submit" class="btn btn-outline-info">Ajouter une matière</button>
+  </div>
+</div>
