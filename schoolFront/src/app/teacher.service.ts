@@ -31,4 +31,8 @@ export class TeacherService {
   modify(value: Teacher): Observable<Teacher> {
     return this.http.put<Teacher>(`${this.url}`, value)
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`)
+  }
 }

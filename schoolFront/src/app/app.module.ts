@@ -19,6 +19,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectAddComponent } from './subject-add/subject-add.component';
 import {HttpClientModule} from "@angular/common/http";
 
+
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
   {path: 'schools/param/:sId', component: SchoolParamComponent},

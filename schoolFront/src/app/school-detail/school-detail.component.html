@@ -12,25 +12,49 @@
     <ul class="list-group">
       <li class="list-group-item">Nombre de professeurs : <br>
         <button type="button" class="btn btn-info" routerLink="/schools/{{school?.id}}/teachers">
-          Gérer les professeurs</button>
+          Gérer les professeurs
+        </button>
       </li>
       <li class="list-group-item">Nombre de matières :<br>
         <button type="button" class="btn btn-outline-primary" routerLink="/schools/{{school?.id}}/subjects">
-          Gérer les matières</button>
+          Gérer les matières
+        </button>
       </li>
       <li class="list-group-item">Nombre de classes :<br>
         <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
-          Gérer les classes</button>
+          Gérer les classes
+        </button>
       </li>
       <li class="list-group-item">Nombre de salles de classe :<br>
         <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
-          Gérer les salles</button>
+          Gérer les salles
+        </button>
       </li>
     </ul>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-danger" (click)="open(content)">Supprimer l'ecole</button>
   </div>
 </div>
 <br>
 <div>
   <button type="button" class="btn btn-outline-info" routerLink="/schools">Retour liste établissement</button>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Verification pour suppression</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        Voulez-vous vraiment supprimer l'ecole : {{school?.name}}
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteById()">OUI</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">NON</button>
+  </div>
+</ng-template>
 

@@ -35,4 +35,8 @@ export class SchoolService {
   modify(value: SchoolModel): Observable<SchoolModel> {
     return this.http.post<SchoolModel>(`${this.url}/${value.id}`, value)
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`)
+  }
 }
