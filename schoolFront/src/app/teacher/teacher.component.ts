@@ -9,9 +9,6 @@ import {Teacher} from "../../model/teacher.model";
 export class TeacherComponent {
 
   @Input()
-  schoolId: number | undefined
-
-  @Input()
   teacher: Teacher | undefined
 
 

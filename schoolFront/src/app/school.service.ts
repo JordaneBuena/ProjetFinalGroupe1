@@ -4,6 +4,7 @@ import {TypeSchool} from "../model/typeSchool.enum";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment.development";
+import {Teacher} from "../model/teacher.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class SchoolService {
 
   findAll(): Observable<SchoolModel[]> {
     return this.http.get<SchoolModel[]>(this.url)
+  }
+
+  findAllTeacherBySchool(id: number): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(`${this.url}/${id}/professeurs`)
   }
 
   findOne(id : number): Observable<SchoolModel> {

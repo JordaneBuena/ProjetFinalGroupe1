@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'schools/param/:sId', component: SchoolParamComponent},
   {path: 'schools/:sId', component: SchoolDetailComponent},
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
+  {path: 'schools/:sId/teachers/add', component: TeacherAddComponent},
   {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add-subject', component: SubjectAddComponent},

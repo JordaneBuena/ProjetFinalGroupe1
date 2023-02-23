@@ -1,9 +1,5 @@
 <div class="card" routerLink="/schools/{{teacher?.id}}">
-  <h4 class="card-header">{{teacher?.lastName}} {{teacher?.firstName}}</h4>
-  <div class="card-body"></div>
-  <div class="card-footer">
-    <button type="button" class="btn btn-primary" routerLink="./{{teacher?.id}}">Afficher Détails</button>
-  </div>
+  <h4 class="card-header" routerLink="./{{teacher?.id}}">{{teacher?.lastName}} {{teacher?.firstName}}</h4>
 </div>
 
 
