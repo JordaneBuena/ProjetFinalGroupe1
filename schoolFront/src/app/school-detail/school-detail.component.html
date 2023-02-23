@@ -1,11 +1,14 @@
-<div class="card">
+<div class="card w-50">
   <h4 class="card-header">{{school?.name}} </h4>
   <div class="card-body">
     <ul class="list-group">
-      <li class="list-group-item">{{school?.address}} </li>
-      <li class="list-group-item">{{school?.typeSchool}} </li>
-      <li class="list-group-item">{{school?.phone}} </li>
+      <li class="list-group-item">
+        {{school?.address}}<br>
+        {{school?.typeSchool}}<br>
+        {{school?.phone}}<br>
+      </li>
     </ul>
+    <br>
     <ul class="list-group">
       <li class="list-group-item">Nombre de professeurs : <br>
         <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
