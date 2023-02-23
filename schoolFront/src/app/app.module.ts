@@ -1,28 +1,39 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SchoolComponent } from './school/school.component';
-import { SchoolListComponent } from './school-list/school-list.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {SchoolComponent} from './school/school.component';
+import {SchoolListComponent} from './school-list/school-list.component';
 import {RouterModule, Routes} from "@angular/router";
-import { SchoolDetailComponent } from './school-detail/school-detail.component';
-import { SchoolParamComponent } from './school-param/school-param.component';
+import {SchoolDetailComponent} from './school-detail/school-detail.component';
+import {SchoolParamComponent} from './school-param/school-param.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {TeacherListComponent} from './teacher-list/teacher-list.component';
+import {TeacherComponent} from './teacher/teacher.component';
+import {TeacherDetailComponent} from './teacher-detail/teacher-detail.component';
+import {TeacherAddComponent} from './teacher-add/teacher-add.component';
 
 const routes: Routes = [
-  { path: 'schools', component: SchoolListComponent },
-  {path: 'schools/param/:id', component: SchoolParamComponent },
-  {path: 'schools/:id', component: SchoolDetailComponent },
-  {path:'', redirectTo: 'schools', pathMatch:'full'}];
+  {path: 'schools', component: SchoolListComponent},
+  {path: 'schools/param/:sId', component: SchoolParamComponent},
+  {path: 'schools/:sId', component: SchoolDetailComponent},
+  {path: 'schools/:sId/teachers', component: TeacherListComponent},
+  {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
+  {path: '', redirectTo: 'schools', pathMatch: 'full'}];
+
 @NgModule({
   declarations: [
     AppComponent,
     SchoolComponent,
     SchoolDetailComponent,
     SchoolListComponent,
-    SchoolParamComponent
+    SchoolParamComponent,
+    TeacherListComponent,
+    TeacherComponent,
+    TeacherDetailComponent,
+    TeacherAddComponent
   ],
   imports: [
     BrowserModule,
@@ -34,4 +45,5 @@ const routes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
