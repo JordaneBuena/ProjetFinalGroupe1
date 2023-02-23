@@ -15,7 +15,6 @@ export class SubjectListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.subjects = this.subServ.getAll()
-    console.log(this.subjects)
+    this.subServ.getAll().subscribe(v => this.subjects = v)
   }
 }

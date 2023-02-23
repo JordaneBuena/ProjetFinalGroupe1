@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
   {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
+  {path: 'schools/:sId/subjects/add-subject', component: SubjectAddComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
 
 @NgModule({
