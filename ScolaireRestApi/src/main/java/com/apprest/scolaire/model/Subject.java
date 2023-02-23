@@ -6,10 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -35,10 +37,15 @@ public class Subject {
 	@NonNull
 	private String color;
 	
-	@NonNull
-	@ManyToMany
-	@JoinColumn(name="classroom_id")
-	private List<Classroom> classroomsExcluded;
+//	@NonNull
+//	@ManyToMany(fetch = FetchType.LAZY,
+//	cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+//	@JoinTable(name="subject_classroomsExcluded", joinColumns = @JoinColumn(name="classroom_id"),
+//	inverseJoinColumns = @JoinColumn(name="subject_id"))
+	
+//	@ManyToMany
+//	@JoinColumn(name="classroom_id")
+//	private List<Classroom> classroomsExcluded;
 	
 	@NonNull
 	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
@@ -46,7 +53,7 @@ public class Subject {
 	
 	@NonNull
 	@ManyToOne
-	@JsonIgnoreProperties("subjects")
+	@JsonIgnoreProperties({"address","type","phone","subjects","classrooms"})
 	private School school;
 	
 	
