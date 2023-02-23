@@ -24,6 +24,7 @@ export class TeacherService {
   }
 
   add(value: SchoolModel): Observable<Teacher> {
+    console.log(value)
     return this.http.post<Teacher>(`${this.url}`,value)
   }
 

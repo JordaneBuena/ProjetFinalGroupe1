@@ -1,11 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SchoolService} from "../school.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Teacher} from "../../model/teacher.model";
-import { NgbAlertModule, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import {TeacherService} from "../teacher.service";
 
 @Component({
   selector: 'app-teacher-add',
@@ -14,35 +11,37 @@ import { JsonPipe } from '@angular/common';
 })
 export class TeacherAddComponent implements OnInit {
 
-  model: NgbDateStruct | undefined;
-
   myForm!: FormGroup;
   teacher: Teacher | undefined
   formSubmitted: boolean = false
 
-  id: string | undefined
+  schoolId: string | undefined
 
   constructor(private fb: FormBuilder,
-              private teachServ: SchoolService,
+              private teachServ: TeacherService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   };
 
   submitForm() {
     this.formSubmitted = true
+    console.log(this.myForm.value)
     if (this.myForm.valid) {
-      this.teachServ.modify(this.myForm.value)
+      console.log('**************')
+      this.teachServ.add(this.myForm.value)
         .subscribe(s =>
-          this.router.navigateByUrl('./'))
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
     }
   };
 
   ngOnInit(): void {
+    this.schoolId = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+
     this.myForm = this.fb.group({
       lastName: ['', Validators.required],
       firstName: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
-      subjects: ['', Validators.required]
+      dateOfBirth: [new Date(), Validators.required],
+      school: [{id: this.schoolId}]
     })
   }
 }
