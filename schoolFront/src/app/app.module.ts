@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -19,7 +19,11 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectAddComponent } from './subject-add/subject-add.component';
 import {HttpClientModule} from "@angular/common/http";
 import { KlassComponent } from './klass/klass.component';
+import {registerLocaleData} from "@angular/common";
+import localeFr from '@angular/common/locales/fr';
 
+
+registerLocaleData(localeFr, 'fr');
 
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
@@ -56,7 +60,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
