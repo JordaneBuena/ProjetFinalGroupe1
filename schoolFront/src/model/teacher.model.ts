@@ -10,4 +10,7 @@ export interface Teacher {
     name: string
   }
   subjects: Subject[]
+  school: {
+    id: number
+  }
 }

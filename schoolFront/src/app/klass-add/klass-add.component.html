@@ -12,15 +12,19 @@
         <label for="name">Nom de la classe</label>
         <input type="text" id="name" formControlName="name">
       </div>
-      <div class="form-text">
-        <label for="principalTeacher">Professeur principal</label>
-        <input type="text" id="principalTeacher" formControlName="principalTeacher">
-        Faire une liste déroulante pour le professeur !!!!
+      <div class="form-text"  formGroupName="principalTeacher">
+        <label for="principalTeacher" >Professeur principal</label>
+          <select id="principalTeacher" formControlName="id">
+          <option class="lastName" *ngFor="let t of teachers" [value]="t.id">{{t.lastName}}</option>
+          </select>
       </div>
 
     </div>
     <div class="card-footer">
       <button class="btn btn-outline-info" type="submit">Ajouter</button>
     </div>
+    <pre>
+      <p>myForm Klass{{myForm.value | json}} </p>
+  </pre>
   </form>
 </div>
