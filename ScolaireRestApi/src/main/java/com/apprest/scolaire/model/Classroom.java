@@ -34,12 +34,10 @@ public class Classroom {
 	@NonNull
 	private String name;
 	
-//	@NonNull
-//	@ManyToMany(fetch = FetchType.LAZY,
-//			cascade = {CascadeType.PERSIST,CascadeType.MERGE},
-//	mappedBy = "classroomsExcluded")
+	@NonNull
+	@ManyToMany
 //	@JsonIgnore
-//	private List<Subject> subjectsExcluded;
+	private List<Subject> subjectsExcluded;
 	
 
 	private int capacite;

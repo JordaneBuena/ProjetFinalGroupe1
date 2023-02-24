@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.apprest.scolaire.dao.KlassDao;
+import com.apprest.scolaire.dao.PlanningDao;
 import com.apprest.scolaire.model.Klass;
+import com.apprest.scolaire.model.Planning;
+import com.apprest.scolaire.model.Teacher;
 
 
 
@@ -29,6 +32,9 @@ public class KlassController {
 	
 	@Autowired
 	KlassDao klassDao;
+	
+	@Autowired
+	PlanningDao pdao;
 	
 
 	
@@ -50,7 +56,8 @@ public class KlassController {
 //		Klass k = this.klassDao.findById(id).get();
 //		
 //		System.out.println(id);
-		this.klassDao.forceDelete(id);
+//		this.klassDao.forceDelete(id);
+		this.klassDao.deleteById(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
@@ -65,6 +72,11 @@ public class KlassController {
 		Klass k = this.klassDao.findById(id).get();
 		k.setName(klass.getName());
 		
+		int number = klass.getPlanning().getId();
+		Planning p = this.pdao.findById(number).get();
+	
+		k.setPlanning(p);
+			
 		this.klassDao.save(k);
 		return new ResponseEntity<Klass>(k,HttpStatus.CREATED);	
 	}

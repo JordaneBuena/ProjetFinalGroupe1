@@ -44,14 +44,8 @@ public class TeacherController {
 	
 	
 	@GetMapping({"/", ""})
-	public ResponseEntity<List<Teacher>> getAll() throws ParseException {
+	public ResponseEntity<List<Teacher>> getAll(){
 		
-//		School teacher = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
-//		teacherDao.save(teacher);
-//		//Date dob1 = new Date(88, Calendar.SEPTEMBER, 19);
-//		LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
-//		teacherDao.save(new Teacher("toto", "FirstName", dob, teacher));
-//		
 		return new ResponseEntity<List<Teacher>>(teacherDao.findAll(), HttpStatus.OK);
 	}
 	

@@ -33,7 +33,7 @@ public class Klass {
 	private String name;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="planning_id")
+	@JoinColumn(name="planning_id", referencedColumnName = "id")
 	@JsonIgnoreProperties({"courses","klass"})
 	private Planning planning;
 	

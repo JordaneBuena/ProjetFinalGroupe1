@@ -40,8 +40,8 @@ public class Teacher {
 	@NonNull
 	private Date dateOfBirth;
 	
-	@OneToOne
-	@JoinColumn(name="klass_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="klass_id", referencedColumnName = "id")
 	@JsonIgnoreProperties("principalTeacher")
 	private Klass principaleKlass;
 	
