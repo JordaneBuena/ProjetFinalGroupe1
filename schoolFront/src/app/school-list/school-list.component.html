@@ -1,9 +1,14 @@
-<h1>Liste des établissements</h1>
-<br>
-<div class="card-deck w-50">
-  <app-school *ngFor=" let s of schoolList" [school]="s"></app-school>
-</div>
-<div>
-  <button type="button" class="btn btn-outline-info" routerLink="/schools/param/-1">
-    Ajouter un établissement</button>
+<div class="container d-flex h-100">
+  <div class="row align-self-center">
+    <h1>Liste des établissements</h1>
+    <br>
+    <div class="card-deck">
+      <app-school *ngFor=" let s of schoolList" [school]="s"></app-school>
+    </div>
+    <div>
+      <button type="button" class="btn btn-outline-info" routerLink="/schools/param/-1">
+        Ajouter un établissement
+      </button>
+    </div>
+  </div>
 </div>
