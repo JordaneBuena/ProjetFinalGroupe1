@@ -53,7 +53,7 @@ public class Teacher {
 	
 	@NonNull
 	@ManyToOne
-	@JsonIgnore
+	@JsonIgnoreProperties({"subjects", "classrooms", "teachers"})
 	private School school;
 	
 	@OneToMany

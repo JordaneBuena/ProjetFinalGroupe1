@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.apprest.scolaire.dao.KlassDao;
 import com.apprest.scolaire.dao.SchoolDao;
 import com.apprest.scolaire.dao.SubjectDao;
 import com.apprest.scolaire.dao.TeacherDao;
 import com.apprest.scolaire.model.Classroom;
+import com.apprest.scolaire.model.Klass;
+import com.apprest.scolaire.model.Planning;
 import com.apprest.scolaire.model.School;
 import com.apprest.scolaire.model.SchoolType;
 import com.apprest.scolaire.model.Subject;
@@ -44,6 +48,10 @@ public class TeacherController {
 	@Autowired
 	SubjectDao subjectDao;
 	
+	@Autowired
+	KlassDao klassDao;
+	
+
 	
 	
 	
@@ -83,6 +91,15 @@ public class TeacherController {
 		List<Subject> s = teacher.getSubjects();
 		
 		t.setSubjects(s);
+		
+		int number = teacher.getPrincipaleKlass().getId();
+		Klass principalKlass = this.klassDao.findById(number).get();
+		
+		t.setPrincipaleKlass(principalKlass);
+		
+		School school = this.schoolDao.findById(number).get();
+		
+		t.setSchool(school);
 		
 	
 		teacherDao.save(t);
