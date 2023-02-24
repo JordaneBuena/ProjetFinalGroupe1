@@ -37,6 +37,9 @@ public class SubjectController {
 	@Autowired
 	SchoolDao schdao;
 	
+	@Autowired
+	CourseDao cdao;
+	
 	
 	@GetMapping({"","/"})
 	public ResponseEntity<List<Subject>> findAll(){
@@ -79,7 +82,9 @@ public class SubjectController {
 		int number = subject.getSchool().getId();		
 		School school = this.schdao.findById(number).get();		
 		s.setSchool(school);
-
+		
+		// marche si List<Cours> est null (non modifiable pour le moment
+		
 		this.sdao.save(s);
 		return new ResponseEntity<Subject>(s,HttpStatus.CREATED);	
 	}

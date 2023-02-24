@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +21,10 @@ import com.apprest.scolaire.model.Klass;
 
 
 
+
 @RestController
-@RequestMapping("/classe")
 @CrossOrigin
+@RequestMapping("/classe")
 public class KlassController {
 	
 	@Autowired
@@ -32,13 +32,8 @@ public class KlassController {
 	
 
 	
-	
 	@GetMapping({"/", ""})
-	public ResponseEntity<List<Klass>> getAll() throws ParseException {
-		//Klass klass = new Klass("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
-		//schoolDao.save(school);
-		//LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
-		//klassDao.save(new Klass("toto", "FirstName", dob, school));
+	public ResponseEntity<List<Klass>> getAll(){
 		
 		return new ResponseEntity<List<Klass>>(klassDao.findAll(), HttpStatus.OK);
 	}
@@ -52,7 +47,10 @@ public class KlassController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteOne(@PathVariable Integer id) { 
-		this.klassDao.deleteById(id);
+//		Klass k = this.klassDao.findById(id).get();
+//		
+//		System.out.println(id);
+		this.klassDao.forceDelete(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
@@ -62,11 +60,13 @@ public class KlassController {
 		return new ResponseEntity<Klass>(klass, HttpStatus.CREATED);
 	}
 	
-	@PutMapping({"/{id}"})
-	public ResponseEntity<Klass> addOne(@PathVariable Integer id, @RequestBody Klass klass){
-		Klass klass1 = this.klassDao.findById(id).get();
-		this.klassDao.save(klass);
-		return new ResponseEntity<Klass>(klass1, HttpStatus.CREATED);
+	@PostMapping("/{id}")
+	public ResponseEntity<Klass> editOne(@PathVariable int id, @RequestBody Klass klass){
+		Klass k = this.klassDao.findById(id).get();
+		k.setName(klass.getName());
+		
+		this.klassDao.save(k);
+		return new ResponseEntity<Klass>(k,HttpStatus.CREATED);	
 	}
 
 }

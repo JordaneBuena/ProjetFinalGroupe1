@@ -3,6 +3,9 @@ package com.apprest.scolaire.model;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,11 +31,12 @@ import lombok.RequiredArgsConstructor;
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int id;
 		
-		@OneToMany(mappedBy = "planning")
+		@OneToMany(mappedBy = "planning", cascade = CascadeType.ALL)
+		@JsonIgnore
 		private List<Course> courses;
 		
-		@OneToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name="klass_id")
+		@OneToOne(mappedBy = "planning")
+		@JsonIgnoreProperties({"planning","principalTeacher"})
 		private Klass klass;
 		
 

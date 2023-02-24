@@ -40,12 +40,13 @@ public class Teacher {
 	@NonNull
 	private Date dateOfBirth;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="klass_id")
+	@JsonIgnoreProperties("principalTeacher")
 	private Klass principaleKlass;
 	
 	
-	@OneToMany(mappedBy = "teacher")
+	@OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Course> courses;
 	
