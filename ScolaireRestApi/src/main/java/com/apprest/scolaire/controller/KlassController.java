@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.apprest.scolaire.dao.KlassDao;
+import com.apprest.scolaire.dao.PlanningDao;
 import com.apprest.scolaire.model.Klass;
+import com.apprest.scolaire.model.Planning;
+import com.apprest.scolaire.model.Teacher;
 
 
 
@@ -29,6 +32,9 @@ public class KlassController {
 	
 	@Autowired
 	KlassDao klassDao;
+	
+	@Autowired
+	PlanningDao pdao;
 	
 
 	
@@ -52,6 +58,10 @@ public class KlassController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteOne(@PathVariable Integer id) { 
+//		Klass k = this.klassDao.findById(id).get();
+//		
+//		System.out.println(id);
+//		this.klassDao.forceDelete(id);
 		this.klassDao.deleteById(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
@@ -62,11 +72,18 @@ public class KlassController {
 		return new ResponseEntity<Klass>(klass, HttpStatus.CREATED);
 	}
 	
-	@PutMapping({"/{id}"})
-	public ResponseEntity<Klass> addOne(@PathVariable Integer id, @RequestBody Klass klass){
-		Klass klass1 = this.klassDao.findById(id).get();
-		this.klassDao.save(klass);
-		return new ResponseEntity<Klass>(klass1, HttpStatus.CREATED);
+	@PostMapping("/{id}")
+	public ResponseEntity<Klass> editOne(@PathVariable int id, @RequestBody Klass klass){
+		Klass k = this.klassDao.findById(id).get();
+		k.setName(klass.getName());
+		
+		int number = klass.getPlanning().getId();
+		Planning p = this.pdao.findById(number).get();
+	
+		k.setPlanning(p);
+			
+		this.klassDao.save(k);
+		return new ResponseEntity<Klass>(k,HttpStatus.CREATED);	
 	}
 
 }

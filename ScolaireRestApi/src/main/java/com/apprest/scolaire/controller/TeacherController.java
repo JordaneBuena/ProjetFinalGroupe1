@@ -39,16 +39,12 @@ public class TeacherController {
 	
 	
 	
-//	@GetMapping({"/", ""})
-//	public ResponseEntity<List<Teacher>> getAll() throws ParseException {
-//		School school = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
-//		schoolDao.save(school);
-//		//Date dob1 = new Date(88, Calendar.SEPTEMBER, 19);
-//		LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
-//		teacherDao.save(new Teacher("toto", "FirstName", dob, school));
-//		
-//		return new ResponseEntity<List<Teacher>>(teacherDao.findAll(), HttpStatus.OK);
-//	}
+	
+	@GetMapping({"/", ""})
+	public ResponseEntity<List<Teacher>> getAll(){
+		
+		return new ResponseEntity<List<Teacher>>(teacherDao.findAll(), HttpStatus.OK);
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Teacher> findOne(@PathVariable Integer id) {

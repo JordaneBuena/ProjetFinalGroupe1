@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -18,7 +18,15 @@ import { SubjectComponent } from './subject/subject.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectAddComponent } from './subject-add/subject-add.component';
 import {HttpClientModule} from "@angular/common/http";
+import { KlassComponent } from './klass/klass.component';
+import {registerLocaleData} from "@angular/common";
+import localeFr from '@angular/common/locales/fr';
+import { KlassAddComponent } from './klass-add/klass-add.component';
+import { KlassDetailComponent } from './klass-detail/klass-detail.component';
+import { KlassListComponent } from './klass-list/klass-list.component';
 
+
+registerLocaleData(localeFr, 'fr');
 
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
@@ -27,6 +35,9 @@ const routes: Routes = [
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
   {path: 'schools/:sId/teachers/add', component: TeacherAddComponent},
   {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
+  {path: 'schools/:sId/klasses', component: TeacherListComponent},
+  {path: 'schools/:sId/klasses/add', component: TeacherAddComponent},
+  {path: 'schools/:sId/klasses/:kId', component: TeacherDetailComponent},
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add', component: SubjectAddComponent},
   {path: 'schools/:sId/subjects/:sId', component: SubjectComponent},
@@ -45,7 +56,11 @@ const routes: Routes = [
     TeacherAddComponent,
     SubjectComponent,
     SubjectListComponent,
-    SubjectAddComponent
+    SubjectAddComponent,
+    KlassComponent,
+    KlassAddComponent,
+    KlassDetailComponent,
+    KlassListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +70,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -31,12 +31,13 @@ public class Klass {
 	@NonNull
 	private String name;
 	
-	@OneToOne(mappedBy = "klass")
-	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="planning_id", referencedColumnName = "id")
+	@JsonIgnoreProperties({"courses","klass"})
 	private Planning planning;
 	
 	@OneToOne(mappedBy = "principaleKlass")
-	@JsonIgnore
+	@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})
 	private Teacher principalTeacher;
 	
 //	@OneToOne

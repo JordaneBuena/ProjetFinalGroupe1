@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.apprest.scolaire.dao.KlassDao;
 import com.apprest.scolaire.dao.PlanningDao;
 import com.apprest.scolaire.model.Planning;
-
-
-
 
 
 @RestController
@@ -29,6 +28,9 @@ public class PlanningController {
 	
 	@Autowired
 	PlanningDao planningDao;
+	
+	@Autowired 
+	KlassDao kdao;
 	
 
 	
@@ -59,6 +61,11 @@ public class PlanningController {
 	@PostMapping({"", "/"})
 	public ResponseEntity<Planning> addOne(@RequestBody Planning planning){
 		this.planningDao.save(planning);
+		
+//		int number = planning.getKlass().getId();
+//		
+//		Klass k = this.kdao.findById(number).get();
+			
 		return new ResponseEntity<Planning>(planning, HttpStatus.CREATED);
 	}
 	
