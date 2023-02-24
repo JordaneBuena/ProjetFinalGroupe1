@@ -35,11 +35,8 @@ public class Classroom {
 	private String name;
 	
 //	@NonNull
-//	@ManyToMany(fetch = FetchType.LAZY,
-//			cascade = {CascadeType.PERSIST,CascadeType.MERGE},
-//	mappedBy = "classroomsExcluded")
-//	@JsonIgnore
-//	private List<Subject> subjectsExcluded;
+	@ManyToMany
+	private List<Subject> subjectsExcluded;
 	
 
 	private int capacite;
