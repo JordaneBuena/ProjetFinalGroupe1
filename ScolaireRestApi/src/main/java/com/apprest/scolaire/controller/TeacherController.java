@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.apprest.scolaire.dao.SchoolDao;
+import com.apprest.scolaire.dao.SubjectDao;
 import com.apprest.scolaire.dao.TeacherDao;
+import com.apprest.scolaire.model.Classroom;
 import com.apprest.scolaire.model.School;
 import com.apprest.scolaire.model.SchoolType;
+import com.apprest.scolaire.model.Subject;
 import com.apprest.scolaire.model.Teacher;
 
 
@@ -36,6 +39,10 @@ public class TeacherController {
 	
 	@Autowired
 	SchoolDao schoolDao;
+	
+	
+	@Autowired
+	SubjectDao subjectDao;
 	
 	
 	
@@ -65,11 +72,20 @@ public class TeacherController {
 		return new ResponseEntity<Teacher>(teacher, HttpStatus.CREATED);
 	}
 	
-	@PutMapping({"/{id}"})
-	public ResponseEntity<Teacher> addOne(@PathVariable Integer id, @RequestBody Teacher teacher){
-		Teacher teacher1 = this.teacherDao.findById(id).get();
-		this.teacherDao.save(teacher);
-		return new ResponseEntity<Teacher>(teacher1, HttpStatus.CREATED);
+	@PostMapping("/{id}")
+	public ResponseEntity<Teacher> editOne(@PathVariable int id, @RequestBody Teacher teacher){
+		Teacher t = this.teacherDao.findById(id).get();
+		t.setDateOfBirth(teacher.getDateOfBirth());
+		t.setLastName(teacher.getLastName());
+		t.setFirstName(teacher.getFirstName());
+		
+		
+		List<Subject> s = teacher.getSubjects();
+		
+		t.setSubjects(s);
+		
+	
+		teacherDao.save(t);
+		return new ResponseEntity<Teacher>(t,HttpStatus.CREATED);	
 	}
-
 }
