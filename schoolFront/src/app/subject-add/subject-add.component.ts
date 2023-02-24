@@ -33,14 +33,18 @@ export class SubjectAddComponent implements OnInit{
   };
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
-    if (this.id != '') {
-      this.sServ.getOne(+this.id).subscribe(v => this.subject = v)
-    }
+    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    if (id != '') {
+      this.sServ.getOne(+id).subscribe(v => {
+        this.subject = v
+      this.myForm.get('name')?.setValue(this.subject.name)
+      this.myForm.get('color')?.setValue(this.subject.color)
+    })
+  }
 
     this.myForm = this.fb.group({
       name: [this.subject?.name || '', Validators.required],
-      colour: [this.subject?.colour || '', Validators.required]
+      color: [this.subject?.color || '', Validators.required]
     })
   }
 
