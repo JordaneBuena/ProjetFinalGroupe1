@@ -24,12 +24,12 @@ export class KlassService {
     return this.http.get<Klass>(`${this.url}/${id}`)
   }
 
-  add(value: SchoolModel): Observable<Klass> {
+  add(value: Klass): Observable<Klass> {
     console.log(value)
     return this.http.post<Klass>(`${this.url}`,value)
   }
 
-  modify(value: Teacher): Observable<Klass> {
+  modify(value: Klass): Observable<Klass> {
     return this.http.put<Klass>(`${this.url}`, value)
   }
 
