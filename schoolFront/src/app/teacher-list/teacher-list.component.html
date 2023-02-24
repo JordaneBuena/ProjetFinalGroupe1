@@ -4,6 +4,8 @@
 
 <div *ngIf="teachers.length < 1">
   Pas de professeur
+  <br>
+  <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter un professeur</button>
 </div>
 <div *ngIf="teachers.length > 0">
   <div class="card-columns">
@@ -11,8 +13,6 @@
   </div>
   <div>
     <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
-
-    <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter un professeur</button>
   </div>
 </div>
 

@@ -18,6 +18,7 @@ import { SubjectComponent } from './subject/subject.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectAddComponent } from './subject-add/subject-add.component';
 import {HttpClientModule} from "@angular/common/http";
+import { KlassComponent } from './klass/klass.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     TeacherAddComponent,
     SubjectComponent,
     SubjectListComponent,
-    SubjectAddComponent
+    SubjectAddComponent,
+    KlassComponent
   ],
   imports: [
     BrowserModule,
