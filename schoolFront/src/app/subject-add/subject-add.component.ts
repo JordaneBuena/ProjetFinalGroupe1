@@ -24,6 +24,7 @@ export class SubjectAddComponent implements OnInit{
               private router: Router){};
 
   submitForm() {
+    console.log(this.myForm.value);
     this.formSubmitted = true
     if (this.myForm.valid) {
       this.sServ.add(this.myForm.value)
@@ -33,9 +34,9 @@ export class SubjectAddComponent implements OnInit{
   };
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
-    if (id != '') {
-      this.sServ.getOne(+id).subscribe(v => {
+    this.id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    if (this.id != '') {
+      this.sServ.getOne(+this.id).subscribe(v => {
         this.subject = v
       this.myForm.get('name')?.setValue(this.subject.name)
       this.myForm.get('color')?.setValue(this.subject.color)
@@ -44,7 +45,8 @@ export class SubjectAddComponent implements OnInit{
 
     this.myForm = this.fb.group({
       name: [this.subject?.name || '', Validators.required],
-      color: [this.subject?.color || '', Validators.required]
+      color: [this.subject?.color || '', Validators.required],
+      school: {id:this.id}
     })
   }
 
