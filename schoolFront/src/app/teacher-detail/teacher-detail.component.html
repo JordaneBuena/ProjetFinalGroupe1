@@ -10,7 +10,7 @@
       Est le professeur principal de la classe : {{teacher?.principaleKlass?.name}}
     </div>
     <ul class="list-group">
-      <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.colour}" class="list-group-item">
+      <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.color}" class="list-group-item">
         {{s.name}}<br>
       </li>
     </ul>

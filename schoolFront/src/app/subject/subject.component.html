@@ -1,7 +1,24 @@
-<div class="card">
-  <div class="card-body" [ngStyle]="{'background-color': subject?.colour}">
-    {{subject?.name}}
-    <button type="submit" class="btn btn-outline-danger" routerLink="./">Supprimer</button>
+<div class="card w-50">
+  <div class="card-body" [ngStyle]="{'background-color': subject?.color}">
+    <span>Nom{{subject?.name}}</span>
+    <button class="btn btn-outline-danger" (click)="open(content)">X</button>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Verification pour suppression</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        Voulez-vous vraiment supprimer la matière {{subject?.name}} ?
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteById()">OUI</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">NON</button>
+  </div>
+</ng-template>
 <br>

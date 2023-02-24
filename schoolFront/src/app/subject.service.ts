@@ -16,19 +16,21 @@ export class SubjectService {
   subjects : Subject[] = [
     { id: 0,
       name : "Philosophie",
-      colour : "orange"},
+      color : "orange"},
     { id: 1,
-      name : "Français",
-      colour : "blue"},
+      name : "Dessin",
+      color : "blue"},
     { id: 2,
-      name : "SVT",
-      colour : "green"}
+      name : "Musique",
+      color : "green"}
     ]
 
 
   getAll(): Observable<Subject[]>  {
     return this.http.get<Subject[]>(this.url);
   }
+
+
   getOne(id : number): Observable<Subject> {
     return this.http.get<Subject>(`${this.url}/${id}`)
   }

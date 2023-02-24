@@ -17,4 +17,5 @@ export class SubjectListComponent implements OnInit{
   ngOnInit(): void {
     this.subServ.getAll().subscribe(v => this.subjects = v)
   }
+
 }
