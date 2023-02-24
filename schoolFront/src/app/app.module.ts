@@ -35,9 +35,9 @@ const routes: Routes = [
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
   {path: 'schools/:sId/teachers/add', component: TeacherAddComponent},
   {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
-  {path: 'schools/:sId/klasses', component: TeacherListComponent},
-  {path: 'schools/:sId/klasses/add', component: TeacherAddComponent},
-  {path: 'schools/:sId/klasses/:kId', component: TeacherDetailComponent},
+  {path: 'schools/:sId/klasses', component: KlassListComponent},
+  {path: 'schools/:sId/klasses/add', component: KlassAddComponent},
+  {path: 'schools/:sId/klasses/:kId', component: KlassDetailComponent},
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add-subject', component: SubjectAddComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
