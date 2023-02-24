@@ -42,7 +42,7 @@ public class Course {
 	private LocalTime end;
 	
 	@NonNull
-	private String day;
+	private int day;
 	
 	@NonNull
 	@ManyToOne
