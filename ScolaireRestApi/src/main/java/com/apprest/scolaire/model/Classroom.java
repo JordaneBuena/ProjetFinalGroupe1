@@ -34,9 +34,8 @@ public class Classroom {
 	@NonNull
 	private String name;
 	
-	@NonNull
+//	@NonNull
 	@ManyToMany
-//	@JsonIgnore
 	private List<Subject> subjectsExcluded;
 	
 

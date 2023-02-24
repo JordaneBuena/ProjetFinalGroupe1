@@ -3,7 +3,6 @@ package com.apprest.scolaire.model;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -41,5 +40,7 @@ public class Klass {
 	@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})
 	private Teacher principalTeacher;
 	
+//	@OneToOne
+//	private School school;
 
 }

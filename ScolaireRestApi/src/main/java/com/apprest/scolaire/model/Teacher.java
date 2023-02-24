@@ -46,7 +46,7 @@ public class Teacher {
 	private Klass principaleKlass;
 	
 	
-	@OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "teacher")
 	@JsonIgnore
 	private List<Course> courses;
 	
