@@ -28,12 +28,15 @@ import { ClassRoomComponent } from './class-room/class-room.component';
 import { ClassRoomListComponent } from './class-room-list/class-room-list.component';
 import { ClassRoomDetailComponent } from './class-room-detail/class-room-detail.component';
 import { ClassRoomAddComponent } from './class-room-add/class-room-add.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 registerLocaleData(localeFr, 'fr');
 
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
+  {path: 'schools/calendar', component: CalendarComponent},
   {path: 'schools/param/:sId', component: SchoolParamComponent},
   {path: 'schools/:sId', component: SchoolDetailComponent},
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
@@ -71,7 +74,8 @@ const routes: Routes = [
     ClassRoomComponent,
     ClassRoomListComponent,
     ClassRoomDetailComponent,
-    ClassRoomAddComponent
+    ClassRoomAddComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,8 @@ const routes: Routes = [
     NgbModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
