@@ -45,7 +45,7 @@ public class Subject {
 	
 //	@ManyToMany
 //	@JoinColumn(name="classroom_id")
-//	private List<Classroom> classroomsExcluded;
+	//private List<Classroom> classroomsExcluded;
 	
 	@NonNull
 	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)

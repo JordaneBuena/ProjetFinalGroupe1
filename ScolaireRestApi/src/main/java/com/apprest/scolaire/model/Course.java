@@ -68,6 +68,7 @@ public class Course {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="planning_id")
+//	@JsonIgnoreProperties("courses")
 	@JsonIgnore
 	private Planning planning;
 	

@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.apprest.scolaire.dao.KlassDao;
 import com.apprest.scolaire.dao.SchoolDao;
 import com.apprest.scolaire.dao.TeacherDao;
-import com.apprest.scolaire.model.Klass;
 import com.apprest.scolaire.model.School;
 import com.apprest.scolaire.model.SchoolType;
 import com.apprest.scolaire.model.Teacher;
@@ -38,22 +35,20 @@ public class TeacherController {
 	TeacherDao teacherDao;
 	
 	@Autowired
-	KlassDao kdao;
+	SchoolDao schoolDao;
 	
 	
 	
-	
-	@GetMapping({"/", ""})
-	public ResponseEntity<List<Teacher>> getAll() throws ParseException {
-		
-//		School teacher = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
-//		teacherDao.save(teacher);
+//	@GetMapping({"/", ""})
+//	public ResponseEntity<List<Teacher>> getAll() throws ParseException {
+//		School school = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
+//		schoolDao.save(school);
 //		//Date dob1 = new Date(88, Calendar.SEPTEMBER, 19);
 //		LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
-//		teacherDao.save(new Teacher("toto", "FirstName", dob, teacher));
+//		teacherDao.save(new Teacher("toto", "FirstName", dob, school));
 //		
-		return new ResponseEntity<List<Teacher>>(teacherDao.findAll(), HttpStatus.OK);
-	}
+//		return new ResponseEntity<List<Teacher>>(teacherDao.findAll(), HttpStatus.OK);
+//	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Teacher> findOne(@PathVariable Integer id) {
@@ -74,22 +69,11 @@ public class TeacherController {
 		return new ResponseEntity<Teacher>(teacher, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/{id}")
-	public ResponseEntity<Teacher> editOne(@PathVariable int id, @RequestBody Teacher teacher){
-		Teacher t = this.teacherDao.findById(id).get();
-		
-		int number = teacher.getPrincipaleKlass().getId();
-		Klass k = this.kdao.findById(number).get();
-		
-		
-		t.setFirstName(teacher.getFirstName());
-		t.setLastName(teacher.getLastName());
-		t.setDateOfBirth(teacher.getDateOfBirth());
-		t.setPrincipaleKlass(k);
-		
-
-		this.teacherDao.save(t);
-		return new ResponseEntity<Teacher>(t,HttpStatus.CREATED);	
+	@PutMapping({"/{id}"})
+	public ResponseEntity<Teacher> addOne(@PathVariable Integer id, @RequestBody Teacher teacher){
+		Teacher teacher1 = this.teacherDao.findById(id).get();
+		this.teacherDao.save(teacher);
+		return new ResponseEntity<Teacher>(teacher1, HttpStatus.CREATED);
 	}
 
 }

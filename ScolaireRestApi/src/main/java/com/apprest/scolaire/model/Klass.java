@@ -3,7 +3,6 @@ package com.apprest.scolaire.model;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -32,14 +31,15 @@ public class Klass {
 	@NonNull
 	private String name;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="planning_id")
-	@JsonIgnoreProperties({"courses","klass"})
+	@OneToOne(mappedBy = "klass")
+	@JsonIgnore
 	private Planning planning;
 	
 	@OneToOne(mappedBy = "principaleKlass")
-	@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})
+	@JsonIgnore
 	private Teacher principalTeacher;
 	
+//	@OneToOne
+//	private School school;
 
 }

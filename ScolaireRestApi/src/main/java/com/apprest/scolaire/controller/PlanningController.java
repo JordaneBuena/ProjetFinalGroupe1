@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.apprest.scolaire.dao.PlanningDao;
-import com.apprest.scolaire.model.Klass;
 import com.apprest.scolaire.model.Planning;
-import com.apprest.scolaire.model.Teacher;
 
 
 
@@ -36,7 +34,12 @@ public class PlanningController {
 	
 	
 	@GetMapping({"/", ""})
-	public ResponseEntity<List<Planning>> getAll(){		
+	public ResponseEntity<List<Planning>> getAll() throws ParseException {
+		//School school = new School("nom école", "2 rue des roses", SchoolType.COLLEGE, "00112221222");
+		//schoolDao.save(school);
+		//LocalDate dob = LocalDate.of(1980, Month.JANUARY, 1);
+		//planningDao.save(new Planning("toto", "FirstName", dob, school));
+		
 		return new ResponseEntity<List<Planning>>(planningDao.findAll(), HttpStatus.OK);
 	}
 	
@@ -59,14 +62,11 @@ public class PlanningController {
 		return new ResponseEntity<Planning>(planning, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/{id}")
-	public ResponseEntity<Planning> editOne(@PathVariable int id, @RequestBody Planning planning){
-		Planning p = this.planningDao.findById(id).get();
-		p.setKlass(planning.getKlass());		
-		this.planningDao.save(p);
-		return new ResponseEntity<Planning>(p,HttpStatus.CREATED);	
+	@PutMapping({"/{id}"})
+	public ResponseEntity<Planning> addOne(@PathVariable Integer id, @RequestBody Planning planning){
+		Planning planning1 = this.planningDao.findById(id).get();
+		this.planningDao.save(planning);
+		return new ResponseEntity<Planning>(planning1, HttpStatus.CREATED);
 	}
-	
-
 
 }
