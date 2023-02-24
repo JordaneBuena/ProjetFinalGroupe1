@@ -21,6 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { KlassComponent } from './klass/klass.component';
 import {registerLocaleData} from "@angular/common";
 import localeFr from '@angular/common/locales/fr';
+import { KlassAddComponent } from './klass-add/klass-add.component';
+import { KlassDetailComponent } from './klass-detail/klass-detail.component';
+import { KlassListComponent } from './klass-list/klass-list.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -32,6 +35,9 @@ const routes: Routes = [
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
   {path: 'schools/:sId/teachers/add', component: TeacherAddComponent},
   {path: 'schools/:sId/teachers/:tId', component: TeacherDetailComponent},
+  {path: 'schools/:sId/klasses', component: TeacherListComponent},
+  {path: 'schools/:sId/klasses/add', component: TeacherAddComponent},
+  {path: 'schools/:sId/klasses/:kId', component: TeacherDetailComponent},
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add-subject', component: SubjectAddComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
@@ -50,7 +56,10 @@ const routes: Routes = [
     SubjectComponent,
     SubjectListComponent,
     SubjectAddComponent,
-    KlassComponent
+    KlassComponent,
+    KlassAddComponent,
+    KlassDetailComponent,
+    KlassListComponent
   ],
   imports: [
     BrowserModule,

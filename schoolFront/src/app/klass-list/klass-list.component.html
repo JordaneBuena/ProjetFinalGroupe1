@@ -1,13 +1,14 @@
-<h2>Liste des professeurs</h2>
+<h2>Liste des classes</h2>
 
 
 
-<div *ngIf="teachers.length < 1">
-  Pas de professeur
+<div *ngIf="klasses.length < 1">
+  Pas de classes
+  <br>
 </div>
-<div *ngIf="teachers.length > 0">
+<div *ngIf="klasses.length > 0">
   <div class="card-columns">
-    <app-teacher *ngFor="let t of teachers" [teacher]="t" routerLink="{{t.id}}"></app-teacher>
+    <app-klass *ngFor="let k of klasses" [klass]="k" routerLink="{{k.id}}"></app-klass>
   </div>
 </div>
 

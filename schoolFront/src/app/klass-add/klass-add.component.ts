@@ -1,24 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Teacher} from "../../model/teacher.model";
 import {TeacherService} from "../teacher.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Klass} from "../../model/klass.model";
+import {KlassService} from "../klass.service";
 
 @Component({
-  selector: 'app-teacher-add',
-  templateUrl: './teacher-add.component.html',
-  styleUrls: ['./teacher-add.component.css']
+  selector: 'app-klass-add',
+  templateUrl: './klass-add.component.html',
+  styleUrls: ['./klass-add.component.css']
 })
-export class TeacherAddComponent implements OnInit {
+export class KlassAddComponent {
 
   myForm!: FormGroup;
-  teacher: Teacher | undefined
+  klass: Klass | undefined
   formSubmitted: boolean = false
 
   schoolId: string | undefined
 
   constructor(private fb: FormBuilder,
-              private teachServ: TeacherService,
+              private klassServ: KlassService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   };
@@ -27,9 +29,9 @@ export class TeacherAddComponent implements OnInit {
     this.formSubmitted = true
     console.log(this.myForm.value)
     if (this.myForm.valid) {
-      this.teachServ.add(this.myForm.value)
+      this.klassServ.add(this.myForm.value)
         .subscribe(s =>
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
     }
   };
 
@@ -37,10 +39,9 @@ export class TeacherAddComponent implements OnInit {
     this.schoolId = this.activatedRoute.snapshot.paramMap.get("sId") || "";
 
     this.myForm = this.fb.group({
-      lastName: ['', Validators.required],
-      firstName: ['', Validators.required],
-      dateOfBirth: [new Date(), Validators.required],
-      school: [{id: this.schoolId}]
+      name: ['', Validators.required],
+      principalTeacher: ['', Validators.required],
+      school: {id: this.schoolId}
     })
   }
 }

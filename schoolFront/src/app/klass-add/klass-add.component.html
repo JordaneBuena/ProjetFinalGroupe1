@@ -1,0 +1,25 @@
+<div class="card w-50">
+
+  <h1 class="card-header">Paramétrage</h1>
+  <div class="text-danger">
+    <ul *ngIf="!formSubmitted">
+      <li></li>
+    </ul>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="card-body">
+      <div class="form-text">
+        <label for="name">Nom de la classe</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
+      <div class="form-text">
+        <label for="principalTeacher">Prenom</label>
+        <input type="text" id="principalTeacher" formControlName="principalTeacher">
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-outline-info" type="submit">Ajouter</button>
+    </div>
+  </form>
+</div>
