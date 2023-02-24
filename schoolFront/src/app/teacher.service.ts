@@ -23,7 +23,7 @@ export class TeacherService {
     return this.http.get<Teacher>(`${this.url}/${id}`)
   }
 
-  add(value: SchoolModel): Observable<Teacher> {
+  add(value: Teacher): Observable<Teacher> {
     console.log(value)
     return this.http.post<Teacher>(`${this.url}`,value)
   }

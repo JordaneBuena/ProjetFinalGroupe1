@@ -24,6 +24,10 @@ import localeFr from '@angular/common/locales/fr';
 import { KlassAddComponent } from './klass-add/klass-add.component';
 import { KlassDetailComponent } from './klass-detail/klass-detail.component';
 import { KlassListComponent } from './klass-list/klass-list.component';
+import { ClassRoomComponent } from './class-room/class-room.component';
+import { ClassRoomListComponent } from './class-room-list/class-room-list.component';
+import { ClassRoomDetailComponent } from './class-room-detail/class-room-detail.component';
+import { ClassRoomAddComponent } from './class-room-add/class-room-add.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -38,6 +42,9 @@ const routes: Routes = [
   {path: 'schools/:sId/klasses', component: KlassListComponent},
   {path: 'schools/:sId/klasses/add', component: KlassAddComponent},
   {path: 'schools/:sId/klasses/:kId', component: KlassDetailComponent},
+  {path: 'schools/:sId/rooms', component: ClassRoomListComponent},
+  {path: 'schools/:sId/rooms/add', component: ClassRoomAddComponent},
+  {path: 'schools/:sId/rooms/:rId', component: ClassRoomDetailComponent},
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add', component: SubjectAddComponent},
   {path: 'schools/:sId/subjects/:sId', component: SubjectComponent},
@@ -60,7 +67,11 @@ const routes: Routes = [
     KlassComponent,
     KlassAddComponent,
     KlassDetailComponent,
-    KlassListComponent
+    KlassListComponent,
+    ClassRoomComponent,
+    ClassRoomListComponent,
+    ClassRoomDetailComponent,
+    ClassRoomAddComponent
   ],
   imports: [
     BrowserModule,

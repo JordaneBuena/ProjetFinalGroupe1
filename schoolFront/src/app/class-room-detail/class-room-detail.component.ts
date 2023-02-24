@@ -1,32 +1,30 @@
 import {Component, OnInit} from '@angular/core';
-import {Teacher} from "../../model/teacher.model";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {TeacherService} from "../teacher.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Klass} from "../../model/klass.model";
-import {KlassService} from "../klass.service";
+import {ClassRoom} from "../../model/classRoom.model";
+import {ClassRoomService} from "../class-room.service";
 
 @Component({
-  selector: 'app-klass-detail',
-  templateUrl: './klass-detail.component.html',
-  styleUrls: ['./klass-detail.component.css']
+  selector: 'app-class-room-detail',
+  templateUrl: './class-room-detail.component.html',
+  styleUrls: ['./class-room-detail.component.css']
 })
-export class KlassDetailComponent implements OnInit{
+export class ClassRoomDetailComponent implements OnInit{
 
-  klass: Klass | undefined;
+  room: ClassRoom | undefined;
 
   currentModal: NgbModalRef | undefined
 
-  constructor(private klassServ: KlassService,
+  constructor(private roomServ: ClassRoomService,
               private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get("kId") || "";
+    const id = this.activatedRoute.snapshot.paramMap.get("rId") || "";
     if (id != '') {
-      this.klassServ.findOne(+id).subscribe(v => this.klass = v)
+      this.roomServ.findOne(+id).subscribe(v => this.room = v)
     }
   }
 
@@ -37,9 +35,10 @@ export class KlassDetailComponent implements OnInit{
   }
 
   deleteById() {
-    this.klassServ.delete(this.klass ? this.klass.id : -1).subscribe(v => {
+    this.roomServ.delete(this.room ? this.room.id : -1).subscribe(v => {
       this.currentModal?.close()
       this.router.navigate(['../'], {relativeTo: this.activatedRoute})
     })
   }
+
 }

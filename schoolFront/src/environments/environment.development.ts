@@ -3,5 +3,6 @@ export const environment = {
   schoolSuffix: '/ecole',
   teacherSuffix: '/professeur',
   subjectSuffix: '/matiere',
-  klassSuffix: '/classe'
+  klassSuffix: '/classe',
+  classRoomSuffix: '/salle'
 };
