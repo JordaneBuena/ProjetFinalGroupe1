@@ -1,16 +1,14 @@
 import {Subject} from "./subject.model";
+import {SchoolModel} from "./school.model";
+import {Klass} from "./klass.model";
 
 export interface Teacher {
   id: number,
   lastName: string,
   firstName: string,
   dateOfBirth: Date,
-  principaleKlass: {
-    id: number,
-    name: string
-  }
+  principaleKlass: Klass,
+  school: SchoolModel,
   subjects: Subject[]
-  school: {
-    id: number
-  }
+
 }

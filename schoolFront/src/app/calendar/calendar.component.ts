@@ -8,6 +8,7 @@ import {SubjectService} from "../subject.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
+
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']

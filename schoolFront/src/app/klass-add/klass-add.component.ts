@@ -35,6 +35,12 @@ export class KlassAddComponent {
   };
 
   submitForm() {
+    this.formSubmitted = true
+    if (this.myForm.valid) {
+      this.klassServ.add(this.myForm.value)
+        .subscribe(s =>
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
+    }
 
   };
 
@@ -43,11 +49,11 @@ export class KlassAddComponent {
 
     this.myForm = this.fb.group({
       name: ['', Validators.required],
-      principalTeacher: this.fb.group({
-        id: ['']
-      }),
-     school: {id: this.schoolId}
-    })
+    //   principalTeacher: this.fb.group({
+    //     id: ['']
+    //   }),
+      school: {id: this.schoolId}
+     })
     // this.myFormt = this.fb.group({
     //   //name: ['', Validators.required]
     //   principalTeacher: this.fb.group({
