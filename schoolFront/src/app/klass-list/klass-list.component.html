@@ -1,0 +1,19 @@
+<h2>Liste des classes</h2>
+
+
+
+<div *ngIf="klasses.length < 1">
+  Pas de classes
+  <br>
+</div>
+<div *ngIf="klasses.length > 0">
+  <div class="card-columns">
+    <app-klass *ngFor="let k of klasses" [klass]="k" routerLink="{{k.id}}"></app-klass>
+  </div>
+</div>
+
+<div>
+  <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une classe</button>
+  <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
+</div>
+

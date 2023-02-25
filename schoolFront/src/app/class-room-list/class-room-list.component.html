@@ -1,0 +1,19 @@
+<h2>Liste des salles de classe</h2>
+
+
+
+<div *ngIf="clasRooms.length < 1">
+  Pas de salles
+  <br>
+</div>
+<div *ngIf="clasRooms.length > 0">
+  <div class="card-columns">
+    <app-class-room *ngFor="let r of clasRooms" [classRoom]="r" routerLink="{{r.id}}"></app-class-room>
+  </div>
+</div>
+
+<div>
+  <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une classe</button>
+  <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
+</div>
+

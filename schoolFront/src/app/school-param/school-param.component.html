@@ -1,0 +1,47 @@
+<br>
+<div class="container d-flex h-100">
+  <div class="row align-self-center">
+
+    <div class="card-dek">
+      <div class="card">
+        <h1 class="card-header">Paramétrage</h1>
+        <div class="text-danger">
+          <ul *ngIf="formSubmitted">
+            <li *ngIf="myForm.controls['name'].errors?.['required']">Nom requis</li>
+            <li *ngIf="myForm.controls['address'].errors?.['required']">Une adresse est requise</li>
+            <li *ngIf="myForm.controls['type'].errors?.['required']">Un type est requis</li>
+            <li *ngIf="myForm.controls['phone'].errors?.['required']">Un numero de telephone est requis</li>
+          </ul>
+        </div>
+        <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+          <div class="card-body">
+            <div class="form-text">
+              <label for="name">Nom de l'établissement</label>
+              <input type="text" id="name" formControlName="name">
+            </div>
+            <div class="form-text">
+              <label for="address">Adresse</label>
+              <input type="text" id="address" formControlName="address">
+            </div>
+            <div class="group">
+              <label class="form-text" for="type">Type Etablissement</label>
+              <select id="type" formControlName="type">
+                <option value='COLLEGE'>College</option>
+                <option value='LYCEE'>Lycee</option>
+              </select>
+            </div>
+            <div class="form-text">
+              <label for="phone">Téléphone</label>
+              <input type="text" id="phone" formControlName="phone">
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline-info" *ngIf="!school" type="submit">Ajouter</button>
+            <button class="btn btn-outline-primary" *ngIf="school" type="submit">Modifier</button>
+            <button class="btn btn-outline-info" routerLink="../../">Retour</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

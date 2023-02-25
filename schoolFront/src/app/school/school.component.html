@@ -1,0 +1,20 @@
+<div class="card">
+  <h4 class="card-header" routerLink="/schools/{{school?.id}}">{{school?.name}} </h4>
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item">{{school?.address}} </li>
+      <li class="list-group-item">{{school?.type}} </li>
+      <li class="list-group-item">{{school?.phone}} </li>
+    </ul>
+  </div>
+  <div class="card-footer" >
+    <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
+      Parametrer
+    </button>
+  </div>
+</div>
+<br>
+
+
+
+

@@ -1,0 +1,42 @@
+<h2>Détails du professeur</h2>
+
+<div class="card w-50">
+  <h4 class="card-header">{{teacher?.lastName}} {{teacher?.firstName}}</h4>
+  <div class="card-body">
+    <div class="card-text">
+      Né(e) le : {{teacher?.dateOfBirth | date:'fullDate'}}
+    </div>
+    <div class="card-text">
+      Est le professeur principal de la classe : {{teacher?.principaleKlass?.name}}
+    </div>
+    <ul class="list-group">
+      <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.color}" class="list-group-item">
+        {{s.name}}<br>
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-danger" (click)="open(content)">Supprimer le professeur</button>
+  </div>
+</div>
+<br>
+<div>
+  <button type="button" class="btn btn-outline-info" routerLink="../">Retour vue professeur</button>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Verification pour suppression</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        Voulez-vous vraiment supprimer l'ecole : {{teacher?.lastName}} {{teacher?.firstName}}
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteById()">OUI</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">NON</button>
+  </div>
+</ng-template>
