@@ -1,7 +1,9 @@
 package com.apprest.scolaire.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -56,6 +58,13 @@ public class Subject {
 	@JsonIgnoreProperties({"address","type","phone","subjects","classrooms", "klasses"})
 	private School school;
 	
+	//@NonNull
+	
+	//@JoinTable( name = "subject_teacher",
+    //joinColumns = @JoinColumn( name = "teacher_id" ),
+    //inverseJoinColumns = @JoinColumn( name = "subject_id" ) )
+	@ManyToMany(mappedBy= "subjects")
+	private List<Teacher> teachers ;
 	
 	
 

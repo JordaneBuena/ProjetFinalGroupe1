@@ -30,6 +30,7 @@ import { ClassRoomDetailComponent } from './class-room-detail/class-room-detail.
 import { ClassRoomAddComponent } from './class-room-add/class-room-add.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarComponent } from './calendar/calendar.component';
+import { TeacherSubjectModifyComponent } from './teacher-subject-modify/teacher-subject-modify.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -51,6 +52,7 @@ const routes: Routes = [
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add', component: SubjectAddComponent},
   {path: 'schools/:sId/subjects/:sId', component: SubjectComponent},
+  {path: 'schools/:sId/teachers/subjects/modify', component: TeacherSubjectModifyComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
 
 @NgModule({
@@ -75,7 +77,8 @@ const routes: Routes = [
     ClassRoomListComponent,
     ClassRoomDetailComponent,
     ClassRoomAddComponent,
-    CalendarComponent
+    CalendarComponent,
+    TeacherSubjectModifyComponent
   ],
   imports: [
     BrowserModule,

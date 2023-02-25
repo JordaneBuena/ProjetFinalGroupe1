@@ -31,6 +31,7 @@ export class SubjectService {
   }
 
 
+
   getOne(id : number): Observable<Subject> {
     return this.http.get<Subject>(`${this.url}/${id}`)
   }
