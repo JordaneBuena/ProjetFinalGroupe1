@@ -47,7 +47,7 @@ public class Classroom {
 	
 
 	@ManyToOne
-	@JsonIgnoreProperties({"name","address","type","phone","subjects","classrooms"})
+	@JsonIgnoreProperties({"name","address","type","phone","subjects","classrooms","klasses"})
 	private School school;
 	
 

@@ -1,7 +1,7 @@
 <div class="card w-50">
   <h1 class="card-header">Ajouter une matière</h1>
   <div class="text-danger">
-    <ul *ngIf="!formSubmitted">
+    <ul *ngIf="formSubmitted">
       <li *ngIf="myForm.controls['name'].errors?.['required']">Le nom est requis</li>
       <li *ngIf="myForm.controls['color'].errors?.['required']">La couleur est requise</li>
 

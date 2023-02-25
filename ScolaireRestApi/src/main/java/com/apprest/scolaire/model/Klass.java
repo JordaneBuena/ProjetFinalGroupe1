@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,7 +42,9 @@ public class Klass {
 	@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})
 	private Teacher principalTeacher;
 	
-//	@OneToOne
-//	private School school;
+	@NonNull
+	@JsonIgnoreProperties({"subjects", "classrooms", "teachers", "klasses"})
+	@ManyToOne
+	private School school;
 
 }

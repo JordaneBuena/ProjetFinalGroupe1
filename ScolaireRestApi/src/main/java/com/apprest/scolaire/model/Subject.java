@@ -53,7 +53,7 @@ public class Subject {
 	
 	@NonNull
 	@ManyToOne
-	@JsonIgnoreProperties({"address","type","phone","subjects","classrooms"})
+	@JsonIgnoreProperties({"address","type","phone","subjects","classrooms", "klasses"})
 	private School school;
 	
 	

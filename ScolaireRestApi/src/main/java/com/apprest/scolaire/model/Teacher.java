@@ -41,7 +41,7 @@ public class Teacher {
 	@NonNull
 	private Date dateOfBirth;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="klass_id", referencedColumnName = "id")
 	@JsonIgnoreProperties("principalTeacher")
 	private Klass principaleKlass;
@@ -53,7 +53,7 @@ public class Teacher {
 	
 	@NonNull
 	@ManyToOne
-	@JsonIgnoreProperties({"subjects", "classrooms", "teachers"})
+	@JsonIgnoreProperties({"subjects", "classrooms", "teachers", "klasses"})
 	private School school;
 	
 	@OneToMany

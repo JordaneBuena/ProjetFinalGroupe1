@@ -13,17 +13,17 @@ export class SubjectService {
   url = `${environment.urlApi}${environment.subjectSuffix}`;
   constructor(private http:HttpClient){};
 
-  subjects : Subject[] = [
-    { id: 0,
-      name : "Philosophie",
-      color : "orange"},
-    { id: 1,
-      name : "Dessin",
-      color : "blue"},
-    { id: 2,
-      name : "Musique",
-      color : "green"}
-    ]
+  // subjects : Subject[] = [
+  //   { id: 0,
+  //     name : "Philosophie",
+  //     color : "orange"},
+  //   { id: 1,
+  //     name : "Dessin",
+  //     color : "blue"},
+  //   { id: 2,
+  //     name : "Musique",
+  //     color : "green"}
+  //   ]
 
 
   getAll(): Observable<Subject[]>  {

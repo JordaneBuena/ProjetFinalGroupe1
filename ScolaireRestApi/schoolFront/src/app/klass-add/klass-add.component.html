@@ -12,12 +12,7 @@
         <label for="name">Nom de la classe</label>
         <input type="text" id="name" formControlName="name">
       </div>
-      <div class="form-text"  formGroupName="principalTeacher">
-        <label for="principalTeacher" >Professeur principal</label>
-          <select id="principalTeacher" formControlName="id">
-          <option class="lastName" *ngFor="let t of teachers" [value]="t.id">{{t.lastName}}</option>
-          </select>
-      </div>
+
 
     </div>
     <div class="card-footer">

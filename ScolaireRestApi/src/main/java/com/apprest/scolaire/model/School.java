@@ -58,5 +58,10 @@ public class School {
 	@JsonIgnore
 	private List<Teacher> teachers;
 	
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Klass> klasses;
+	
 
 }
