@@ -31,7 +31,9 @@ import { ClassRoomAddComponent } from './class-room-add/class-room-add.component
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarComponent } from './calendar/calendar.component';
 import { TeacherSubjectModifyComponent } from './teacher-subject-modify/teacher-subject-modify.component';
-
+import {ModalModule} from "ngx-bootstrap/modal";
+import {NgDragDropModule} from "ng-drag-drop";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -87,7 +89,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     HttpClientModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgDragDropModule,
+    ModalModule.forRoot(),
+    DragDropModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
