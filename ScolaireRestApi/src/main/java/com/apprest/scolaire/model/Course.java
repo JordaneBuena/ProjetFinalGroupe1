@@ -75,6 +75,12 @@ public class Course {
 	@JsonIgnore
 	private Planning planning;
 	
+	@ManyToOne
+	private School school;
+	
+	@ManyToOne
+	private Klass klass;
+	
 	
 		
 	

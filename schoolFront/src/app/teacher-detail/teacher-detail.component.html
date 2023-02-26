@@ -12,12 +12,13 @@
     <ul class="list-group">
       <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.color}" class="list-group-item">
         {{s.name}}<br>
+        {{s.color}}<br>
       </li>
     </ul>
   </div>
   <div class="card-footer">
     <button class="btn btn-danger" (click)="open(content)">Supprimer le professeur</button>
-    <button type="button" class="btn btn-outline-info" routerLink="../subjects/modify">Modifier ses matières</button>
+    <button type="button" class="btn btn-outline-info" routerLink="./subjects/modify">Modifier ses matières</button>
   </div>
 </div>
 <br>

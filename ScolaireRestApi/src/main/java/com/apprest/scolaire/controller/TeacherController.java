@@ -69,6 +69,10 @@ public class TeacherController {
 		return optionCond.isPresent() ? new ResponseEntity<Teacher>(optionCond.get(), HttpStatus.OK)
 				: new ResponseEntity<Teacher>(HttpStatus.NOT_FOUND);
 	}
+	
+	@GetMapping("/{id}/professeurs/matieres")
+	public ResponseEntity<List<Subject>> findByIdTeacher(@PathVariable Integer id) {
+		return new ResponseEntity<List<Subject>>(subjectDao.findByIdTeacher(id), HttpStatus.OK);}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteOne(@PathVariable Integer id) { 
