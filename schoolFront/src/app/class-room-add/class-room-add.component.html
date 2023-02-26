@@ -1,1 +1,32 @@
-<p>class-room-add works!</p>
+<div class="card w-50">
+
+  <h1 class="card-header">Ajout de salles</h1>
+  <div class="text-danger">
+    <ul *ngIf="!formSubmitted">
+      <li></li>
+    </ul>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="card-body">
+      <div class="form-text">
+        <label for="name">Nom de la salle</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
+      <label for="subjectsExcluded">Sujet exclus:</label>
+      <br>
+      <ng-container *ngFor="let s of subjects; let i = index" formArrayName="subjectsExcluded">
+        <input type="checkbox" id="subjectsExcluded" [formControlName]="i" />{{s.name}}
+        <br />
+      </ng-container>
+      <div class="form-text">
+        <label for="capacite">Capacité de la salle</label>
+        <input type="number" id="capacite" formControlName="capacite">
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-outline-info" type="submit">Ajouter</button>
+    </div>
+  </form>
+</div>
+Checkbox values: {{ myForm.value | json}}
