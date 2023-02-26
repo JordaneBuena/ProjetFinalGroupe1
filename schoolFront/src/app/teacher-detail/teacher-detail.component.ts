@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Teacher} from "../../model/teacher.model";
 import {TeacherService} from "../teacher.service";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {Subject} from "../../model/subject.model";
+import {SubjectService} from "../subject.service";
 
 @Component({
   selector: 'app-teacher-detail',
@@ -17,7 +19,10 @@ export class TeacherDetailComponent implements OnInit{
 
   currentModal: NgbModalRef | undefined
 
+  subjects!: Subject[]
+
   constructor(private sServ: TeacherService,
+              private subjectServ: SubjectService,
               private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
               private router: Router) {
@@ -28,6 +33,9 @@ export class TeacherDetailComponent implements OnInit{
     if (id != '') {
       this.sServ.findOne(+id).subscribe(v => this.teacher = v)
     }
+    this.subjectServ.getAll().subscribe(v =>
+      this.subjects)
+
   }
 
   open(content: any) {

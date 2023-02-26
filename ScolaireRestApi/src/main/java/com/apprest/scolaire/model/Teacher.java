@@ -57,8 +57,8 @@ public class Teacher {
 	//@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE} , fetch = FetchType.LAZY )
 	//@JoinTable(name="teacher_subjects", joinColumns = @JoinColumn( name = "teacher_id" ))
 	
-
-	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE} , fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"courses","school","teachers"})
+	@ManyToMany(cascade = {CascadeType.PERSIST} , fetch = FetchType.EAGER)
 	@JoinTable(name = "teacher_subject", joinColumns = @JoinColumn(name = "teacher_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
 	private List<Subject> subjects;
 	

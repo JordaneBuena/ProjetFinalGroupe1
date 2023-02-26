@@ -38,6 +38,7 @@ public class Klass {
 	@JsonIgnoreProperties({"courses","klass"})
 	private Planning planning;
 	
+	@JsonIgnore
 	@OneToOne
 	//@JoinColumn(name="teacher_id", referencedColumnName = "id")
 	//@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})

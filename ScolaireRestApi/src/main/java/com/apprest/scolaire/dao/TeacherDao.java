@@ -16,5 +16,5 @@ public interface TeacherDao extends JpaRepository<Teacher,Integer>{
 	
 	@Query("select t from Teacher t where t.school.id = :id")
 	public List<Teacher> findByIdSchool(@Param("id")Integer id);
-
+	
 }

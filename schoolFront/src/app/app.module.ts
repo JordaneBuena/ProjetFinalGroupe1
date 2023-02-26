@@ -19,7 +19,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectAddComponent } from './subject-add/subject-add.component';
 import {HttpClientModule} from "@angular/common/http";
 import { KlassComponent } from './klass/klass.component';
-import {registerLocaleData} from "@angular/common";
+import {DatePipe, registerLocaleData} from "@angular/common";
 import localeFr from '@angular/common/locales/fr';
 import { KlassAddComponent } from './klass-add/klass-add.component';
 import { KlassDetailComponent } from './klass-detail/klass-detail.component';
@@ -54,7 +54,7 @@ const routes: Routes = [
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add', component: SubjectAddComponent},
   {path: 'schools/:sId/subjects/:sId', component: SubjectComponent},
-  {path: 'schools/:sId/teachers/subjects/modify', component: TeacherSubjectModifyComponent},
+  {path: 'schools/:sId/teachers/:tId/subjects/modify', component: TeacherSubjectModifyComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
 
 @NgModule({
@@ -94,7 +94,7 @@ const routes: Routes = [
     ModalModule.forRoot(),
     DragDropModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'fr' }],
+  providers: [{provide: LOCALE_ID, useValue: 'fr' }, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

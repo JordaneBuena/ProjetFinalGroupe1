@@ -63,6 +63,7 @@ public class Subject {
 	//@JoinTable( name = "subject_teacher",
     //joinColumns = @JoinColumn( name = "teacher_id" ),
     //inverseJoinColumns = @JoinColumn( name = "subject_id" ) )
+	@JsonIgnoreProperties({"courses","school","subjects"})
 	@ManyToMany(mappedBy= "subjects")
 	private List<Teacher> teachers ;
 	
