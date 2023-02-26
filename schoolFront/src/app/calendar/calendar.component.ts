@@ -20,12 +20,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   title:any;
 
   start : any;
-  startH: number = 0;
-
-  startM: number = 0;
   end: any;
-  endH: number = 0;
-  endM: number = 0;
 
   day : string = '';
   @Input() startInput : any;
@@ -76,8 +71,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     droppable: true,
     selectable: true,
     eventSources: [{events: this.events}],
-    eventClick: this.handleDateClick.bind(this)
-    //select:this.addEventClick.bind(this)
+    eventClick: this.handleDateClick.bind(this),
+    select:this.addEventClick.bind(this)
   };
 
   config ={
@@ -99,10 +94,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     console.log(arg);
     console.log(arg.event._def.title);
   this.title = arg.event._def.title;
-    this.startH= arg.event.start.getHours();
-    this.startM= arg.event.start.getMinutes();
-    this.endH = arg.event.end.getHours();
-    this.endM= arg.event.end.getMinutes();
+    this.start= arg.event.start;
+    this.end = arg.event.end;
     this.day = arg.event._def.recurringDef.typeData.daysOfWeek[0];
   switch(arg.event._def.recurringDef.typeData.daysOfWeek[0])
   {
@@ -136,16 +129,13 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(this.templateInfo, this.config);
   }
 
- // addEventClick(ard:any):void{
-    // set values in inputs
- //   this.modalRef = this.modalService.find('input[name=evtStart]').val(
- //     this.start.format('YYYY-MM-DD HH:mm:ss')
- //   );
+ addEventClick(ard:any):void{
+ //  this.modalRef = this.modalService.show('input[name=start]');
  //   this.modalRef = this.modalService.find('input[name=evtEnd]').val(
  //     this.end.format('YYYY-MM-DD HH:mm:ss')
  //   );
-    // show modal dialog
- //   this.modalRef = this.modalService.show(this.templateInfo, this.config);}
+ //   show modal dialog
+   this.modalRef = this.modalService.show(this.templateAdd, this.config);}
 
   ngAfterViewInit(): void {
     this.container = new ElementRef('external');
