@@ -18,8 +18,18 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   modalRef?: BsModalRef;
 
   title:any;
+
   start : any;
+  startH: number = 0;
+
+  startM: number = 0;
   end: any;
+  endH: number = 0;
+  endM: number = 0;
+
+  day : string = '';
+  @Input() startInput : any;
+  @Input() endInput: any;
 
 
   events: any = [{
@@ -46,7 +56,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   container: any = this.events[0];
 
-
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
     headerToolbar: {
@@ -68,14 +77,18 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     selectable: true,
     eventSources: [{events: this.events}],
     eventClick: this.handleDateClick.bind(this)
+    //select:this.addEventClick.bind(this)
   };
 
   config ={
     animated: true
   };
-  @ViewChild('templateInfo') template!: string;
+  @ViewChild('templateInfo') templateInfo!: string;
 
-  constructor(private modalService:BsModalService){}
+  @ViewChild('templateAdd') templateAdd!:string;
+
+  constructor(private modalService:BsModalService){
+  }
 
 
   ngOnInit():void{
@@ -86,12 +99,53 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     console.log(arg);
     console.log(arg.event._def.title);
   this.title = arg.event._def.title;
-    this.start = arg.event.start;
-    this.end = arg.event.end;
+    this.startH= arg.event.start.getHours();
+    this.startM= arg.event.start.getMinutes();
+    this.endH = arg.event.end.getHours();
+    this.endM= arg.event.end.getMinutes();
+    this.day = arg.event._def.recurringDef.typeData.daysOfWeek[0];
+  switch(arg.event._def.recurringDef.typeData.daysOfWeek[0])
+  {
+    case '1': {
+      this.day = "Lundi";
+      break;
+    }
+    case '2': {
+      this.day = "Mardi";
+      break;
+    }
+  case '3': {
+      this.day = "Mercredi";
+      break;
+    }
+  case '4': {
+      this.day = "Jeudi";
+      break;
+    }
+  case '5': {
+      this.day = "Vendredi";
+      break;
+    }
+    default:
+      {
+        //statements;
+        break;
+      }
+    }
 
-  this.modalRef = this.modalService.show(this.template, this.config);
+    this.modalRef = this.modalService.show(this.templateInfo, this.config);
   }
 
+ // addEventClick(ard:any):void{
+    // set values in inputs
+ //   this.modalRef = this.modalService.find('input[name=evtStart]').val(
+ //     this.start.format('YYYY-MM-DD HH:mm:ss')
+ //   );
+ //   this.modalRef = this.modalService.find('input[name=evtEnd]').val(
+ //     this.end.format('YYYY-MM-DD HH:mm:ss')
+ //   );
+    // show modal dialog
+ //   this.modalRef = this.modalService.show(this.templateInfo, this.config);}
 
   ngAfterViewInit(): void {
     this.container = new ElementRef('external');
@@ -99,6 +153,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       itemSelector: '.fc-event',
       eventData: (eventEl) => {
         console.log(eventEl);
+        this.title = eventEl.getAttribute("title");
+
         return {
           title: eventEl.innerText,
         };
