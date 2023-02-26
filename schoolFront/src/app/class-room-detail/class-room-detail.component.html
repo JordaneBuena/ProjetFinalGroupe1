@@ -6,6 +6,7 @@
     <div class="card-text">
       Capacité de la salle : {{room?.capacite}}
     </div>
+    <span>Matières non supportée(s) par la classe </span>
     <div *ngIf="room?.subjectsExcluded" class="card-text">
       <ul>
         <li *ngFor="let s of room?.subjectsExcluded" [ngStyle]="{'color': s.color}">{{s.name}}</li>

@@ -61,13 +61,20 @@ export class ClassRoomAddComponent {
     const selectedOrderIds = (this.getordersFormArray().value as boolean[])
       .map((checked, i) => checked ? this.subjects[i].id : null)
       .filter(v => v !== null);
-    let myClassroom: ClassRoom = this.myForm.value
+    let myClassroom = this.myForm.value
     myClassroom.subjectsExcluded = []
     selectedOrderIds.forEach(id => {
-      myClassroom.subjectsExcluded.push()
+      let s = {id: id}
+      myClassroom.subjectsExcluded.push(s)
     })
-    console.log(myClassroom)
-    console.log(selectedOrderIds);
+    this.formSubmitted = true
+
+    console.log(this.myForm)
+    if (this.myForm.valid) {
+      this.roomServ.add(this.myForm.value)
+        .subscribe(s =>
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
+    }
   };
 
 }

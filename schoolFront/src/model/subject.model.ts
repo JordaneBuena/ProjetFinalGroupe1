@@ -2,7 +2,7 @@ import {SchoolModel} from "./school.model";
 
 export interface Subject{
   id: number,
-  name: string,
-  color: string,
+  name: string | undefined,
+  color: string | undefined,
   school: SchoolModel
 }
