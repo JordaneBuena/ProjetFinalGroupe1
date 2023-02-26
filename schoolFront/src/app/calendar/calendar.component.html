@@ -1,0 +1,30 @@
+<div id="external-event" [style.margin-right]="'50px'" [style.margin-left]="'50px'">
+
+  <h2 class="card card-header">Liste des cours</h2>
+  <div class="external-event-list">
+    <div *ngIf="events.length > 0">
+      <div class="fc-event"  *ngFor="let ev of events" #external>
+        <div class="card" cdkDrag>{{ev.title}}</div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <full-calendar [options]="calendarOptions"></full-calendar>
+  <ng-template #templateInfo>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{title}}</h4>
+      <button type="button" class="btn-close close pull-right"
+              aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      {{title}}<br>
+      Début : {{start}}<br>
+      Fin :  {{end}}
+    </div>
+  </ng-template>
+</div>
+
+

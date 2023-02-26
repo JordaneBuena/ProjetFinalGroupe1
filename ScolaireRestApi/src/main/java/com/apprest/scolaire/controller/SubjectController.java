@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apprest.scolaire.dao.*;
 import com.apprest.scolaire.model.*;
 
+import jakarta.transaction.Transactional;
+
 
 @RestController
 @CrossOrigin

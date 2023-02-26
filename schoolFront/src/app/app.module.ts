@@ -28,12 +28,18 @@ import { ClassRoomComponent } from './class-room/class-room.component';
 import { ClassRoomListComponent } from './class-room-list/class-room-list.component';
 import { ClassRoomDetailComponent } from './class-room-detail/class-room-detail.component';
 import { ClassRoomAddComponent } from './class-room-add/class-room-add.component';
-
+import {FullCalendarModule} from "@fullcalendar/angular";
+import { CalendarComponent } from './calendar/calendar.component';
+import { TeacherSubjectModifyComponent } from './teacher-subject-modify/teacher-subject-modify.component';
+import {ModalModule} from "ngx-bootstrap/modal";
+import {NgDragDropModule} from "ng-drag-drop";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 registerLocaleData(localeFr, 'fr');
 
 const routes: Routes = [
   {path: 'schools', component: SchoolListComponent},
+  {path: 'schools/calendar', component: CalendarComponent},
   {path: 'schools/param/:sId', component: SchoolParamComponent},
   {path: 'schools/:sId', component: SchoolDetailComponent},
   {path: 'schools/:sId/teachers', component: TeacherListComponent},
@@ -48,6 +54,7 @@ const routes: Routes = [
   {path: 'schools/:sId/subjects', component: SubjectListComponent},
   {path: 'schools/:sId/subjects/add', component: SubjectAddComponent},
   {path: 'schools/:sId/subjects/:sId', component: SubjectComponent},
+  {path: 'schools/:sId/teachers/subjects/modify', component: TeacherSubjectModifyComponent},
   {path: '', redirectTo: 'schools', pathMatch: 'full'}];
 
 @NgModule({
@@ -71,7 +78,9 @@ const routes: Routes = [
     ClassRoomComponent,
     ClassRoomListComponent,
     ClassRoomDetailComponent,
-    ClassRoomAddComponent
+    ClassRoomAddComponent,
+    CalendarComponent,
+    TeacherSubjectModifyComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +88,11 @@ const routes: Routes = [
     NgbModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule,
+    NgDragDropModule,
+    ModalModule.forRoot(),
+    DragDropModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]

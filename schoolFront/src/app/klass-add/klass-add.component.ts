@@ -14,25 +14,34 @@ import {KlassService} from "../klass.service";
 export class KlassAddComponent {
 
   myForm!: FormGroup;
+  myFormt!: FormGroup;
+
   klass: Klass | undefined
   formSubmitted: boolean = false
 
-  schoolId: string | undefined
+  schoolId!: string
+
+  teachers: Teacher[] = []
+
+  klass1!: Klass
+
+
 
   constructor(private fb: FormBuilder,
               private klassServ: KlassService,
+              private teacherServ: TeacherService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   };
 
   submitForm() {
     this.formSubmitted = true
-    console.log(this.myForm.value)
     if (this.myForm.valid) {
       this.klassServ.add(this.myForm.value)
         .subscribe(s =>
           this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
     }
+
   };
 
   ngOnInit(): void {
@@ -40,8 +49,29 @@ export class KlassAddComponent {
 
     this.myForm = this.fb.group({
       name: ['', Validators.required],
-      principalTeacher: ['', Validators.required],
+    //   principalTeacher: this.fb.group({
+    //     id: ['']
+    //   }),
       school: {id: this.schoolId}
-    })
-  }
+     })
+    // this.myFormt = this.fb.group({
+    //   //name: ['', Validators.required]
+    //   principalTeacher: this.fb.group({
+    //     id: [''],
+    //     principaleKlass:{
+    //      id: [''],
+    //     }
+    //   })
+      // school: {id: this.schoolId}
+    //})
+
+    this.schoolId = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    this.teacherServ.findAll().subscribe(v => this.teachers = v.filter(teacher => teacher.principaleKlass === null).filter(teacher => teacher.school.id === +this.schoolId))
+
+    }
+
+
+
+
+
 }

@@ -3,7 +3,6 @@ import {Subject} from "../model/subject.model";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment.development";
 import {Observable} from "rxjs";
-import {Teacher} from "../model/teacher.model";
 import {SchoolModel} from "../model/school.model";
 
 @Injectable({
@@ -16,7 +15,6 @@ export class SubjectService {
   getAll(): Observable<Subject[]>  {
     return this.http.get<Subject[]>(this.url);
   }
-
 
   getOne(id : number): Observable<Subject> {
     return this.http.get<Subject>(`${this.url}/${id}`)

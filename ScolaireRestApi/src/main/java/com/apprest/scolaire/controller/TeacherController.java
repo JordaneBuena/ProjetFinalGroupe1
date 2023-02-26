@@ -30,6 +30,8 @@ import com.apprest.scolaire.model.SchoolType;
 import com.apprest.scolaire.model.Subject;
 import com.apprest.scolaire.model.Teacher;
 
+import jakarta.transaction.Transactional;
+
 
 
 
@@ -86,20 +88,22 @@ public class TeacherController {
 		t.setDateOfBirth(teacher.getDateOfBirth());
 		t.setLastName(teacher.getLastName());
 		t.setFirstName(teacher.getFirstName());
-		
+		List<Subject> ss = null;
+		t.setSubjects(ss);
 		
 		List<Subject> s = teacher.getSubjects();
 		
 		t.setSubjects(s);
 		
-		int number = teacher.getPrincipaleKlass().getId();
-		Klass principalKlass = this.klassDao.findById(number).get();
+		//int number = teacher.getPrincipaleKlass().getId();
 		
-		t.setPrincipaleKlass(principalKlass);
+		//Klass principalKlass = this.klassDao.findById(number).get();
+		//t.setPrincipaleKlass(principalKlass);
 		
-		School school = this.schoolDao.findById(number).get();
 		
-		t.setSchool(school);
+		//School school = this.schoolDao.findById(number).get();
+		
+		//t.setSchool(school);
 		
 	
 		teacherDao.save(t);

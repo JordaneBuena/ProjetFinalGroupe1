@@ -89,7 +89,9 @@ public class KlassController {
 		int number2 = klass.getPrincipalTeacher().getId();
 		Teacher t = this.teacherDao.findById(number2).get();
 		
-		k.setPrincipalTeacher(t);
+	k.setPrincipalTeacher(t);
+		
+		
 			
 		this.klassDao.save(k);
 		return new ResponseEntity<Klass>(k,HttpStatus.CREATED);	
