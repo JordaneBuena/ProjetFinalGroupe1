@@ -9,6 +9,9 @@
     <div class="card-text">
       Est le professeur principal de la classe : {{teacher?.principaleKlass?.name}}
     </div>
+    <div>
+      Il enseigne la ou les matière(s) suivante(s):
+    </div>
     <ul class="list-group">
       <li *ngFor="let s of teacher?.subjects" [ngStyle]="{'color': s.color}" class="list-group-item">
         {{s.name}}<br>

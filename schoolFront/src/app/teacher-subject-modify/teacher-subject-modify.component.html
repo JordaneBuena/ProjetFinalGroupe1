@@ -1,14 +1,16 @@
 <div class="card w-50">
 
-  <h1 class="card-header">Ajouter un nouveau Professeur</h1>
+  <h1 class="card-header">Modifier les matières du professeur: {{teacher?.firstName}} {{teacher?.lastName}}</h1>
   <div class="text-danger">
     <ul *ngIf="formSubmitted">
-
+      <li *ngIf="myForm3.controls['id'].errors?.['required']">La matière 1 est requise</li>
+      <li *ngIf="myForm4.controls['id'].errors?.['required']">La matière 2 est requise</li>
+      <li *ngIf="myForm5.controls['id'].errors?.['required']">La matière 3 est requise</li>
     </ul>
   </div>
   <form [formGroup]="myForm" (ngSubmit)="submitForm()">
     <div class="card-body">
-      <div class="form-text">
+      <!--<div class="form-text">
         <label for="id">Id</label>
         <input type="text" id="id" formControlName="id" >
       </div>
@@ -23,7 +25,7 @@
       <div>
         <label for="dateOfBirth">Date de naissance</label>
         <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
-      </div>
+      </div>-->
 
       <form [formGroup]="myForm3" (ngSubmit)="submitForm()">
       <div class="form-text"  >
@@ -72,7 +74,6 @@
         <div class="form-text"  >
           <label for="subject3" >Matière enseignée</label>
           <select id="subject3" formControlName="id">
-            {{schoolId}}
             <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
           </select>
         </div>
@@ -98,6 +99,6 @@
     </div>
   </form>
 
-  {{myForm.value | json}}
+
 
 </div>

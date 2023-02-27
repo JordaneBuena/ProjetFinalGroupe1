@@ -73,8 +73,11 @@ export class TeacherSubjectModifyComponent {
         this.myForm.get('id')?.setValue(this.teacher.id)
         this.myForm.get('firstName')?.setValue(this.teacher.firstName)
         this.myForm.get('lastName')?.setValue(this.teacher.lastName)
-        this.myForm.get('dateOfBirth')?.setValue(this.teacher.dateOfBirth)
+        this.myForm3.get('id')?.setValue(this.subject1?.id)
+        this.myForm.get('dateOfBirth')?.setValue(this.datepipe.transform(this.teacher.dateOfBirth, 'yyyy-MM-dd'))
+        //this.myForm.get('dateOfBirth')?.setValue(this.teacher.dateOfBirth)
       })
+
 
       //if (this.myForm.get('id')?.value === true){
        // this.myForm.get('id')?.enable()
@@ -116,26 +119,27 @@ export class TeacherSubjectModifyComponent {
 
 
       this.myForm = this.fb.group({
-        id: [{value: this.teacher?.id || '', disabled: true}, Validators.required],
-        lastName: [{value: this.teacher?.lastName || '', disabled: true}, Validators.required],
-        firstName: [{value: this.teacher?.firstName || '', disabled: true}, Validators.required],
-        dateOfBirth: [this.teacher?.dateOfBirth.setUTCDate || '', Validators.required],
+        id: [this.teacher?.id || '', Validators.required],
+        lastName: [this.teacher?.lastName || '', Validators.required],
+        firstName: [this.teacher?.firstName || '', Validators.required],
+
+        dateOfBirth: [this.teacher?.dateOfBirth || '', Validators.required],
         school: [{id: this.schoolId}],
         subjects: this.fb.array([
           this.myForm3 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
               //name: [this.subject1?.name || ''],
               //color: [this.subject1?.name || ''],
            // school: [this.subject1?.school || '']
           }),
           this.myForm4 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
            // name: [this.subject2?.name || ''],
            // color: [this.subject2?.name || ''],
            // school: [this.subject2?.school || '']
           }),
           this.myForm5 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
            // name: [this.subject3?.name || ''],
            // color: [this.subject3?.name || ''],
            // school: [this.subject3?.school || '']
@@ -150,6 +154,8 @@ export class TeacherSubjectModifyComponent {
         this.teachers = v.filter(teacher => teacher.school.id === +this.schoolId))
       this.subjectServ.getAll().subscribe(v =>
         this.subjects = v.filter(subject => subject.school.id === +this.schoolId))
+    //this.subjectServ.getOne().subscribe(v =>
+      //this.subject1 = v.filter(subject => subject.school.id === +this.schoolId))
 
       // this.teachServ.findAll().subscribe(v =>
       // this.teachers2 = v.filter(teacher => teacher.id === this.teacher?.id).filter(teacher => teacher.school.id === +this.schoolId))
