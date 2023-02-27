@@ -1,19 +1,22 @@
-<div class="card">
-  <h4 class="card-header" routerLink="/schools/{{school?.id}}">{{school?.name}} </h4>
-  <div class="card-body">
-    <ul class="list-group">
-      <li class="list-group-item">{{school?.address}} </li>
-      <li class="list-group-item">{{school?.type}} </li>
-      <li class="list-group-item">{{school?.phone}} </li>
+<div class="container">
+<div class="card" >
+  <div class="content">
+    <ul>
+      <h3 routerLink="/schools/{{school?.id}}">{{school?.name}}</h3>
+      <li>Adresse: {{school?.address}} </li>
+      <li>Etablissement: {{school?.type}} </li>
+      <li>Tel: {{school?.phone}} </li>
     </ul>
   </div>
-  <div class="card-footer" >
-    <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">
-      Parametrer
-    </button>
-  </div>
+  <button type="button" class="btn btn-outline-primary" routerLink="/schools/param/{{school?.id}}">Parametrer</button>
+
+
+  <ul class="icons">
+    <li><a class ="linkedin" href="#"><i class="fa fa-phone"></i></a></li>
+    <li><a class ="linkedin" href="#"><i class="fa fa-envelope-o"></i></a></li>
+  </ul>
 </div>
-<br>
+</div>
 
 
 
