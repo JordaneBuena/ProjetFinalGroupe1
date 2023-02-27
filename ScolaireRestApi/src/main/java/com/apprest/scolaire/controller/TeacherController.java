@@ -24,7 +24,6 @@ import com.apprest.scolaire.dao.SubjectDao;
 import com.apprest.scolaire.dao.TeacherDao;
 import com.apprest.scolaire.model.Classroom;
 import com.apprest.scolaire.model.Klass;
-import com.apprest.scolaire.model.Planning;
 import com.apprest.scolaire.model.School;
 import com.apprest.scolaire.model.SchoolType;
 import com.apprest.scolaire.model.Subject;
