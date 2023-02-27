@@ -1,25 +1,21 @@
-<div class="card w-50">
+<div class="corps">
+  <div class="container">
 
-  <h1 class="card-header">Paramétrage</h1>
-  <div class="text-danger">
-    <ul *ngIf="!formSubmitted">
-      <li></li>
-    </ul>
-  </div>
   <form [formGroup]="myForm" (ngSubmit)="submitForm()">
-    <div class="card-body">
-      <div class="form-text">
+    <h1>Ajouter une nouvelle classe</h1>
+    <div class="text-danger">
+      <ul *ngIf="formSubmitted">
+        <li></li>
+      </ul>
+    </div>
+    <div class="field">
         <label for="name">Nom de la classe</label>
         <input type="text" id="name" formControlName="name">
-      </div>
-
-
     </div>
-    <div class="card-footer">
       <button class="btn btn-outline-info" type="submit">Ajouter</button>
-    </div>
-    <pre>
-      <p>myForm Klass{{myForm.value | json}} </p>
-  </pre>
   </form>
-</div>
+<!--  <pre>-->
+<!--      <p>myForm Klass{{myForm.value | json}} </p>-->
+<!--  </pre>-->
+  </div>
+  </div>

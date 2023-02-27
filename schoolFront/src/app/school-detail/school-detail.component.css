@@ -87,6 +87,10 @@ h1{
   color:whitesmoke;
 }
 
+.corps .container .card .danger{
+  transform: translateX(-9px);
+}
+
 
 
 
