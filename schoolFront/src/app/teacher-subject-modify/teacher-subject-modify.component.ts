@@ -123,19 +123,19 @@ export class TeacherSubjectModifyComponent {
         school: [{id: this.schoolId}],
         subjects: this.fb.array([
           this.myForm3 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
               //name: [this.subject1?.name || ''],
               //color: [this.subject1?.name || ''],
            // school: [this.subject1?.school || '']
           }),
           this.myForm4 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
            // name: [this.subject2?.name || ''],
            // color: [this.subject2?.name || ''],
            // school: [this.subject2?.school || '']
           }),
           this.myForm5 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
            // name: [this.subject3?.name || ''],
            // color: [this.subject3?.name || ''],
            // school: [this.subject3?.school || '']
