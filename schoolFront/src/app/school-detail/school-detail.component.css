@@ -1,0 +1,98 @@
+*{
+  list-style: none;
+}
+
+h1{
+  text-align: center;
+  padding-top: 50px;
+}
+
+.corps{
+  background:linear-gradient(lightgrey,cornflowerblue);
+  min-height: calc(100vh - 99px);
+  max-width: 100vw;
+}
+
+.corps .container{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.corps .container .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  width: 360px;
+  height: 550px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.corps .container .card .content{
+  /*background-color: blue;*/
+  /*position:relative;*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-direction: column;*/
+  /*text-align: center;*/
+}
+
+.corps .container .card .content ul{
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(11,31,55,0.45);
+}
+
+/*.corps .container .card .content ul li{*/
+/*  text-align: center;*/
+/*  font-size: 16px;*/
+/*  font-weight: normal;*/
+/*  !*margin: 20px 0 10px;*!*/
+/*}*/
+
+.corps .container .card .content ul h3{
+  transform: translateY(-15px);
+}
+
+.corps .container .card .content ul li span{
+  font-weight: bold;
+}
+
+
+.button{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  /*padding-bottom: 20px;*/
+}
+
+
+.button .btn{
+
+  color: #fdfd01;
+  border-color: #fdfd01;
+
+}
+
+.button .btn:hover {
+  background-image: none;
+  background-color: rgba(253,253,1,0.45);
+  border-color: rgba(253,253,1,0.45) ;
+  color:whitesmoke;
+}
+
+.corps .container .card .danger{
+  transform: translateX(-9px);
+}
+
+
+
+

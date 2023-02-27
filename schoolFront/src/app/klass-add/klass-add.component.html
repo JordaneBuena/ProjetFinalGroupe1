@@ -1,0 +1,21 @@
+<div class="corps">
+  <div class="container">
+
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <h1>Ajouter une nouvelle classe</h1>
+    <div class="text-danger">
+      <ul *ngIf="formSubmitted">
+        <li *ngIf="myForm.controls['name'].errors?.['required']">Le nom de la classe est requis</li>
+      </ul>
+    </div>
+    <div class="field">
+        <label for="name">Nom de la classe</label>
+        <input type="text" id="name" formControlName="name">
+    </div>
+      <button class="btn btn-outline-info" type="submit">Ajouter</button>
+  </form>
+<!--  <pre>-->
+<!--      <p>myForm Klass{{myForm.value | json}} </p>-->
+<!--  </pre>-->
+  </div>
+  </div>

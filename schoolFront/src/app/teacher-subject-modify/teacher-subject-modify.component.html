@@ -1,0 +1,103 @@
+<div class="card w-50">
+
+  <h1 class="card-header">Ajouter un nouveau Professeur</h1>
+  <div class="text-danger">
+    <ul *ngIf="formSubmitted">
+
+    </ul>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <div class="card-body">
+     <!-- <div class="form-text">
+        <label for="id">Id</label>
+        <input type="text" id="id" formControlName="id" >
+      </div>
+      <div class="form-text">
+        <label for="lastName">Nom de famille</label>
+        <input type="text" id="lastName" formControlName="lastName">
+      </div>
+      <div class="form-text">
+        <label for="firstName">Prenom</label>
+        <input type="text" id="firstName" formControlName="firstName">
+      </div>
+      <div>
+        <label for="dateOfBirth">Date de naissance</label>
+        <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+      </div>-->
+
+      <form [formGroup]="myForm3" (ngSubmit)="submitForm()">
+      <div class="form-text"  >
+        <label for="subject1" >Matière enseignée</label>
+        <select id="subject1" formControlName="id">
+          {{schoolId}}
+          <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+        </select>
+      </div><!--
+        <div class="form-text">
+          <label for="name1">Nom</label>
+          <input type="text" id="name1" formControlName="name">
+        </div>
+        <div class="form-text">
+          <label for="color1">Nom</label>
+          <input type="text" id="color1" formControlName="color">
+        </div>
+        <div class="form-text">
+          <label for="school1">Nom</label>
+          <input type="text" id="school1" formControlName="school">
+        </div>-->
+      </form>
+      <form [formGroup]="myForm4" (ngSubmit)="submitForm()">
+        <div class="form-text"  >
+          <label for="subject2" >Matière enseignée</label>
+          <select id="subject2" formControlName="id">
+            {{schoolId}}
+            <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+          </select>
+        </div>
+        <!--
+        <div class="form-text">
+          <label for="name2">Nom</label>
+          <input type="text" id="name2" formControlName="name">
+        </div>
+        <div class="form-text">
+          <label for="color2">Nom</label>
+          <input type="text" id="color2" formControlName="color">
+        </div>
+        <div class="form-text">
+          <label for="school2">Nom</label>
+          <input type="text" id="school2" formControlName="school">
+        </div>-->
+      </form>
+      <form [formGroup]="myForm5" (ngSubmit)="submitForm()">
+        <div class="form-text"  >
+          <label for="subject3" >Matière enseignée</label>
+          <select id="subject3" formControlName="id">
+            {{schoolId}}
+            <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+          </select>
+        </div>
+        <!--<div class="form-text">
+          <label for="name3">Nom</label>
+          <input type="text" id="name3" formControlName="name">
+        </div>
+        <div class="form-text">
+          <label for="color3">Nom</label>
+          <input type="text" id="color3" formControlName="color">
+        </div>
+        <div class="form-text">
+          <label for="school3">Nom</label>
+          <input type="text" id="school3" formControlName="school">
+        </div> -->
+      </form>
+
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-outline-info" type="submit">Ajouter</button>
+      <button type="button" class="btn btn-outline-info" routerLink="../../">Retour</button>
+    </div>
+  </form>
+
+
+
+</div>

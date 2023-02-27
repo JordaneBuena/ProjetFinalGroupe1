@@ -1,0 +1,26 @@
+<div class="corps">
+  <div class="container">
+        <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+          <h1>Ajouter une matière</h1>
+          <div class="text-danger">
+            <ul *ngIf="formSubmitted">
+              <li *ngIf="myForm.controls['name'].errors?.['required']">Le nom est requis</li>
+              <li *ngIf="myForm.controls['color'].errors?.['required']">La couleur est requise</li>
+            </ul>
+          </div>
+              <div class="field">
+                <label for="name">Nom de la matière</label>
+                <input type="text" id="name" formControlName="name">
+              </div>
+              <div class="field">
+                <label for="color">Couleur</label>
+                <input type="text" id="color" formControlName="color">
+              </div>
+
+            <button class="btn btn-outline-primary" type="submit" type="button" routerLink="../">Ajouter</button>
+            <span><button class="btn btn-outline-primary" type="button" routerLink="../">Annuler</button></span>
+
+        </form>
+      </div>
+    </div>
+

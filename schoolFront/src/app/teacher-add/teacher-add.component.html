@@ -1,0 +1,73 @@
+<div class="corps">
+  <div class="container">
+
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <h1>Ajouter un nouveau Professeur</h1>
+
+      <div class="text-danger">
+        <ul *ngIf="formSubmitted">
+          <li *ngIf="myForm.controls['lastName'].errors?.['required']">Le nom est requis</li>
+          <li *ngIf="myForm.controls['firstName'].errors?.['required']">Le prénom est requis</li>
+          <li *ngIf="myForm.controls['dateOfBirth'].errors?.['required']">La date de naissance est requise</li>
+        </ul>
+      </div>
+      <div class="field">
+        <label for="lastName">Nom de famille</label>
+        <input type="text" id="lastName" formControlName="lastName">
+      </div>
+      <div class="field">
+        <label for="firstName">Prenom</label>
+        <input type="text" id="firstName" formControlName="firstName">
+
+      </div>
+      <div class="field">
+        <label for="dateOfBirth">Date de naissance</label>
+        <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+      </div>
+      <button class="btn btn-primary" type="submit">Ajouter</button>
+      <span><button type="button" class="btn btn-primary" routerLink="../">Retour</button></span>
+
+    </form>
+
+  </div>
+
+<!--    {{myForm.value | json}}-->
+
+</div>
+
+
+<!--<div class="form-text"  formGroupName="principaleKlass">
+    <label for="principaleKlass" >Classe principale</label>
+    <select id="principaleKlass" formControlName="id">
+      {{schoolId}}
+      <option class="lastName" *ngFor="let k of klasses" [value]="k.id">{{k.name}}</option>
+    </select>
+  </div>
+  <form [formGroup]="myForm2" (ngSubmit)="submitForm()">
+  <div class="form-text"  >
+    <label for="subject1" >Matière enseignée</label>
+    <select id="subject1" formControlName="id">
+      {{schoolId}}
+      <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+    </select>
+  </div>
+  </form>
+  <form [formGroup]="myForm3" (ngSubmit)="submitForm()">
+    <div class="form-text"  >
+      <label for="subject2" >Matière enseignée</label>
+      <select id="subject2" formControlName="id">
+        {{schoolId}}
+        <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+      </select>
+    </div>
+  </form>
+  <form [formGroup]="myForm4" (ngSubmit)="submitForm()">
+    <div class="form-text"  >
+      <label for="subject3" >Matière enseignée</label>
+      <select id="subject3" formControlName="id">
+        {{schoolId}}
+        <option class="lastName" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+      </select>
+    </div>
+  </form>-->
+

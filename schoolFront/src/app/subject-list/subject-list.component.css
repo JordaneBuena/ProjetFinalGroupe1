@@ -1,0 +1,37 @@
+.corps{
+  background:linear-gradient(lightgrey,cornflowerblue);
+  min-height: calc(100vh - 99px);
+  min-width: 100vh;
+  padding:20px 20px;
+  display: flex;
+}
+
+
+
+.corps .container .card {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.corps .container .card h1{
+  text-align: center;
+}
+
+.corps .container .card .card-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn{
+  color: #fdfd01;
+  border-color: #fdfd01;
+}
+
+.btn:hover{
+  background-image: none;
+  background-color: rgba(253,253,1,0.45);
+  border-color: rgba(253,253,1,0.45) ;
+  color:whitesmoke;
+}

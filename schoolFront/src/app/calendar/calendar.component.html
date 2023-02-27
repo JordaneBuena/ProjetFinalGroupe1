@@ -1,0 +1,86 @@
+<div id="external-event" [style.padding-right]="'50px'" [style.padding-left]="'50px'">
+
+  <h2 class="card card-header">Liste des cours</h2>
+  <div class="external-event-list">
+    <div *ngIf="events.length > 0">
+      <div class="fc-event" *ngFor="let ev of events" #external>
+        <div class="card" cdkDrag>{{ev.title}}</div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <full-calendar [options]="calendarOptions"></full-calendar>
+  <ng-template #templateInfo>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{title}}</h4>
+      <button type="button" class="btn-close close pull-right"
+              aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form name="save-event" method="post">
+        <div class="form-group">
+          <label for="title">Matière :</label>
+          <input type="text" name="title" [placeholder]="title" id="title">
+        </div>
+        <div class="form-group">
+          <label for="start">Début : </label>
+          <input type="text" name="start" [placeholder]="[start|date :'shortTime']" id="start">
+        </div>
+        <div class="form-group">
+              <label for="end">Fin : </label>
+        <input type="text" name="end" [placeholder]="[end|date :'shortTime']" id="end">
+        </div>
+    <div class="form-group">
+        <label for="day">Jour : </label>
+        <input type="text" name="day" [placeholder]="day" id="day">
+    </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalRef?.hide()">Close</button>
+  <button type="submit" class="btn btn-primary">Modifier Planning</button>
+</div>
+</ng-template>
+
+
+<ng-template #templateAdd>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ajouter un cours</h4>
+    <button type="button" class="btn-close close pull-right"
+            aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form name="save-event" method="post">
+      <div class="form-group">
+          <label for="emptyTitle">Matière :</label>
+          <input type="text" name="title" placeholder="Matière" id="emptyTitle">
+      </div>
+      <div class="form-group">
+          <label for="emptyStart">Début : </label>
+          <input type="text" name="start" placeholder="Heure de Début" id="emptyStart">
+      </div>
+      <div class="form-group">
+          <label for="emptyEnd">Fin : </label>
+          <input type="text" name="end" placeholder="Heure de fin" id="emptyEnd">
+      </div>
+      <div class="form-group">
+          <label for="emptyDay">Jour : </label>
+          <input type="text" name="day" placeholder="Jour" id="emptyDay"><br>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalRef?.hide()">Fermer</button>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </div>
+</ng-template>
+</div>
+
+

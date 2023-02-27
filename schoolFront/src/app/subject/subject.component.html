@@ -1,0 +1,26 @@
+<div class="container d-inline-flex">
+  <div class="card-body" [ngStyle]="{'background-color': subject?.color}"
+       [style.color]="'white'" [style.border-block]="'0.5px solid rgba(11,31,55,0.45)'">
+    {{subject?.name}}
+
+  </div>
+  <button class="btn btn-outline-danger" (click)="open(content)">X</button>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Verification pour suppression</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        Voulez-vous vraiment supprimer la matière {{subject?.name}} ?
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteById()">OUI</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">NON</button>
+  </div>
+</ng-template>
+
