@@ -34,6 +34,7 @@ import { TeacherSubjectModifyComponent } from './teacher-subject-modify/teacher-
 import {ModalModule} from "ngx-bootstrap/modal";
 import {NgDragDropModule} from "ng-drag-drop";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { MenuComponent } from './menu/menu.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -80,7 +81,8 @@ const routes: Routes = [
     ClassRoomDetailComponent,
     ClassRoomAddComponent,
     CalendarComponent,
-    TeacherSubjectModifyComponent
+    TeacherSubjectModifyComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
