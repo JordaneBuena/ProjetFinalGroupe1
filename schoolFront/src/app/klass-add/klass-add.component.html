@@ -5,7 +5,7 @@
     <h1>Ajouter une nouvelle classe</h1>
     <div class="text-danger">
       <ul *ngIf="formSubmitted">
-        <li></li>
+        <li *ngIf="myForm.controls['name'].errors?.['required']">Le nom de la classe est requis</li>
       </ul>
     </div>
     <div class="field">

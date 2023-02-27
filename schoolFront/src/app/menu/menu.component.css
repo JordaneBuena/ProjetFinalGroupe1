@@ -9,6 +9,7 @@ header{
   height:99px; /* 100% hauteur maximale de la fenêtre */
   width:100vw;  /* 100% largeur maximale de la fenêtre */
 
+
   background-color: rgba(11,31,55,0.84);
 
   /*background-image: url("/assets/images/underwater2.png");*/
@@ -59,7 +60,7 @@ header{
 }
 
 
-@media screen and (max-width:950px){ /* max-width à modif selon nombre de navlinks */
+@media screen and (max-width:1050px){ /* max-width à modif selon nombre de navlinks */
 
   header{
     height:99px; /* 100% hauteur maximale de la fenêtre */

@@ -7,17 +7,17 @@
               Pas de Matière
             </div>
             <div *ngIf="subjects.length > 0">
-              <app-subject *ngFor="let sub of subjects" [subject]="sub"></app-subject>
+              <app-subject *ngFor="let sub of subjects2" [subject]="sub"></app-subject>
             </div>
           </div>
-<!--          <div class="card-footer">-->
-<!--            <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une matière</button>-->
-<!--            <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>-->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une matière</button>
+            <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
 
-          <div *ngIf="subjects.length > 0">
-            <app-subject *ngFor="let sub of subjects2" [subject]="sub"></app-subject>
+<!--          <div *ngIf="subjects.length > 0">-->
+<!--            <app-subject *ngFor="let sub of subjects2" [subject]="sub"></app-subject>-->
           </div>
-<!--        </div>-->
-  </div>
+        </div>
+    </div>
   </div>
 
