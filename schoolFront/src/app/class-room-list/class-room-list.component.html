@@ -1,19 +1,20 @@
-<h2>Liste des salles de classe</h2>
+<div class="corps">
+  <h2>Liste des salles de classe</h2>
 
-
-
-<div *ngIf="clasRooms.length < 1">
-  Pas de salles
-  <br>
-</div>
-<div *ngIf="clasRooms.length > 0">
-  <div class="card-columns">
-    <app-class-room *ngFor="let r of clasRooms" [classRoom]="r" routerLink="{{r.id}}"></app-class-room>
+  <div *ngIf="clasRooms.length < 1">
+    Pas de salles
+    <br>
   </div>
-</div>
+  <div *ngIf="clasRooms.length > 0">
+    <div class="container">
+      <app-class-room *ngFor="let r of clasRooms" [classRoom]="r" routerLink="{{r.id}}"></app-class-room>
+      <div class="button">
+        <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une classe</button>
+        <span><button type="button" class="btn btn-outline-info" routerLink="../">Retour</button></span>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une classe</button>
-  <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
+
 </div>
 

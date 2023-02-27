@@ -25,6 +25,8 @@ export class MenuComponent {
       )
       .subscribe(params => {
         this.sId = Object.values(params).toString();
+        this.sId = this.sId[0];
+        console.log(this.sId)
       });
   }
 
