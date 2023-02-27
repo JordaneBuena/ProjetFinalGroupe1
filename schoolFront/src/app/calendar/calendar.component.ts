@@ -32,7 +32,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     "startTime": "09:30",
     "endTime": "13:00",
     "backgroundColor": "orange",
-    "daysOfWeek": ['1']
+    "daysOfWeek": ['1', '4']
   },
     {
       "title": "Musique",
@@ -72,7 +72,14 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     selectable: true,
     eventSources: [{events: this.events}],
     eventClick: this.handleDateClick.bind(this),
-    select:this.addEventClick.bind(this)
+    select:this.addEventClick.bind(this),
+    eventDrop:(infos)=>{
+      if(!confirm("Etes-vous sûr.e de vouloir déplacer ce cours")){
+        infos.revert(); }
+    },
+    eventResize :(infos)=>{
+      console.log(infos.event.end);
+    }
   };
 
   config ={
@@ -90,6 +97,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   }
 
+  //Edit en event by clicking
   handleDateClick(arg:any){
     console.log(arg);
     console.log(arg.event._def.title);
@@ -129,6 +137,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(this.templateInfo, this.config);
   }
 
+
+  //add en event by clicking
  addEventClick(ard:any):void{
  //  this.modalRef = this.modalService.show('input[name=start]');
  //   this.modalRef = this.modalService.find('input[name=evtEnd]').val(
