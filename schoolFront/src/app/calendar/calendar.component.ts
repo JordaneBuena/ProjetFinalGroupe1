@@ -5,6 +5,10 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
 import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {BsModalService, BsModalRef} from "ngx-bootstrap/modal";
+import {CourseService} from "../course.service";
+import {ActivatedRoute} from "@angular/router";
+import {Course} from "../../model/course.model";
+import {Days} from "../../model/days.enum";
 
 @Component({
 
@@ -27,28 +31,11 @@ import {BsModalService, BsModalRef} from "ngx-bootstrap/modal";
   @Input() startInput : any;
   @Input() endInput: any;
 
+  courses: Course[] = []
 
-  events: any = [{
-    "title": "Philo",
-    "startTime": "09:30",
-    "endTime": "13:00",
-    "backgroundColor": "orange",
-    "daysOfWeek": ['1', '4']
-  },
-    {
-      "title": "Musique",
-      "startTime": "15:30:00",
-      "endTime": "17:00:00",
-      "backgroundColor": "salmon",
-      "daysOfWeek": ['5']
-    },
-    {
-      "title": "Arts Plastique",
-      "startTime": "10:30:00",
-      "endTime": "16:00:00",
-      "backgroundColor": "Lavender",
-      "daysOfWeek": ['3']
-    }]
+
+  events: any[] = []
+
 
   container: any = this.events[0];
 
@@ -85,12 +72,24 @@ import {BsModalService, BsModalRef} from "ngx-bootstrap/modal";
 
   @ViewChild('templateAdd') templateAdd!:string;
 
-  constructor(private modalService:BsModalService){
+  constructor(private modalService:BsModalService,
+              private cServ: CourseService,
+              private route: ActivatedRoute){
   }
 
 
   ngOnInit():void{
-
+    const id = this.route.snapshot.paramMap.get("kId") || "";
+    if (id != '') {
+      this.cServ.findAll().subscribe(v => {
+        // this.courses = v.filter(c => c.klass.id === +id)
+        console.log(v)
+        console.log(Object.values(Days).indexOf(v[0].day) + 1)
+        console.log(Object.values(Days).indexOf(v[1].day) + 1)
+        this.CoursesToEvents()
+        this.calendarOptions.events = this.events
+      })
+    }
   }
 
   //Edit en event by clicking
@@ -166,4 +165,17 @@ import {BsModalService, BsModalRef} from "ngx-bootstrap/modal";
       },
     });
   }*/
+  CoursesToEvents() {
+    let event = []
+    this.courses.map(c => this.events.push(
+      {
+        title: c.subject.name,
+        startTime: c.start,
+        endTime: c.end,
+        backgroundColor: c.subject.color,
+        daysOfWeek: [Object.values(Days).indexOf(c.day) + 1]
+      }
+    ))
+  }
+
 }

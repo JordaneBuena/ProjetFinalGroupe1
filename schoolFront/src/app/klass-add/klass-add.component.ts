@@ -14,9 +14,10 @@ import {KlassService} from "../klass.service";
 export class KlassAddComponent {
 
   myForm!: FormGroup;
-  myFormt!: FormGroup;
+  myForm2!: FormGroup;
 
   klass: Klass | undefined
+  teacher: Teacher | undefined
   formSubmitted: boolean = false
 
   schoolId!: string
@@ -46,12 +47,19 @@ export class KlassAddComponent {
 
   ngOnInit(): void {
     this.schoolId = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    const id = this.activatedRoute.snapshot.paramMap.get("tId") || "";
+
+    // if (id != '') {
+    //   this.teacherServ.findOne(+id).subscribe(v => {
+    //     this.teacher = v
+    //     this.myForm.get('id')?.setValue(this.teacher.id)
+    //   })}
 
     this.myForm = this.fb.group({
       name: ['', Validators.required],
-    //   principalTeacher: this.fb.group({
-    //     id: ['']
-    //   }),
+      principalTeacher: this.myForm2 = this.fb.group({
+         id: ['']
+       }),
       school: {id: this.schoolId}
      })
     // this.myFormt = this.fb.group({
@@ -66,7 +74,7 @@ export class KlassAddComponent {
     //})
 
     this.schoolId = this.activatedRoute.snapshot.paramMap.get("sId") || "";
-    this.teacherServ.findAll().subscribe(v => this.teachers = v.filter(teacher => teacher.principaleKlass === null).filter(teacher => teacher.school.id === +this.schoolId))
+    this.teacherServ.findAll().subscribe(v => this.teachers = v.filter(teacher => teacher.school.id === +this.schoolId))
 
     }
 

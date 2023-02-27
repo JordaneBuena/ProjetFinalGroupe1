@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Subject} from "../../model/subject.model";
 import {SubjectService} from "../subject.service";
+import {SchoolService} from "../school.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-subject-list',
@@ -10,12 +12,20 @@ import {SubjectService} from "../subject.service";
 export class SubjectListComponent implements OnInit{
 
   subjects : Subject[] = [];
+  subjects2 : Subject[] = [];
 
-  constructor(private subServ: SubjectService) {
+  constructor(private subServ: SubjectService,
+              private schoolServ: SchoolService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.subServ.getAll().subscribe(v => this.subjects = v)
+    const id = this.activatedRoute.snapshot.paramMap.get("sId") || "";
+    if (id != '') {
+      this.schoolServ.findAllSubjectBySchool(+id).subscribe(v => this.subjects = v)
+      this.schoolServ.findAllSubjectBySchool(+id).subscribe(v => this.subjects2 = v.filter(subject => subject.color != 'white'))
+
+    }
   }
 
 }

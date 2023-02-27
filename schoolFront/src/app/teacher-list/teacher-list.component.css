@@ -31,7 +31,14 @@ h2{
   margin-left: 20px;
 }
 
+.btn{
+  color: #fdfd01;
+  border-color: #fdfd01;
+}
 
-
-
-
+.btn:hover{
+  background-image: none;
+  background-color: rgba(253,253,1,0.45);
+  border-color: rgba(253,253,1,0.45) ;
+  color:whitesmoke;
+}

@@ -62,4 +62,8 @@ public class Teacher {
 	@JoinTable(name = "teacher_subject", joinColumns = @JoinColumn(name = "teacher_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
 	private List<Subject> subjects;
 	
+	
+	@OneToOne(mappedBy = "principalTeacher")
+	private Klass principalKlass;
+	
 }
