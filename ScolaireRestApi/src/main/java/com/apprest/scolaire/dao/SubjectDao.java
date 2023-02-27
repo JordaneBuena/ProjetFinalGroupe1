@@ -28,6 +28,7 @@ public interface SubjectDao extends JpaRepository<Subject, Integer>{
 	//"join ph.person pr " +
 	//"where pr.address = :address "
 	//"select s from Subject s join s.teacher st where st.id = :id"
-	
+	@Query("select s from Subject s where s.school.id = :id")
+	public List<Subject> findByIdSchool(@Param("id")Integer id);
 
 }
