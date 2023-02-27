@@ -1,6 +1,7 @@
 package com.apprest.scolaire.model;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,10 +35,6 @@ public class Klass {
 	@NonNull
 	private String name;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="planning_id", referencedColumnName = "id")
-	@JsonIgnoreProperties({"courses","klass"})
-	private Planning planning;
 	
 	@JsonIgnore
 	@OneToOne
@@ -48,5 +46,10 @@ public class Klass {
 	@JsonIgnoreProperties({"subjects", "classrooms", "teachers", "klasses"})
 	@ManyToOne
 	private School school;
+	
+	@OneToMany(mappedBy = "klass", cascade = CascadeType.ALL)
+	private List<Course> courses;
+	
+	
 
 }

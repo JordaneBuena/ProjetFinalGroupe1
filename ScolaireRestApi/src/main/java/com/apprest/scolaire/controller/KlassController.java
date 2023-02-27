@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.apprest.scolaire.dao.KlassDao;
-import com.apprest.scolaire.dao.PlanningDao;
 import com.apprest.scolaire.dao.TeacherDao;
 import com.apprest.scolaire.model.Klass;
-import com.apprest.scolaire.model.Planning;
 import com.apprest.scolaire.model.Teacher;
 
 
@@ -34,8 +32,6 @@ public class KlassController {
 	@Autowired
 	KlassDao klassDao;
 	
-	@Autowired
-	PlanningDao pdao;
 	
 	@Autowired
 	TeacherDao teacherDao;
@@ -81,10 +77,7 @@ public class KlassController {
 		Klass k = this.klassDao.findById(id).get();
 		k.setName(klass.getName());
 		
-		int number = klass.getPlanning().getId();
-		Planning p = this.pdao.findById(number).get();
-	
-		k.setPlanning(p);
+
 		
 		int number2 = klass.getPrincipalTeacher().getId();
 		Teacher t = this.teacherDao.findById(number2).get();
