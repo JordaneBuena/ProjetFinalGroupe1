@@ -23,12 +23,12 @@ export class CourseService {
     return this.http.get<Course>(`${this.url}/${id}`)
   }
 
-  add(value: Teacher): Observable<Course> {
+  add(value: Course): Observable<Course> {
     console.log(value)
     return this.http.post<Course>(`${this.url}`,value)
   }
 
-  modify(value: Teacher): Observable<Course> {
+  modify(value: Course): Observable<Course> {
     return this.http.put<Course>(`${this.url}`, value)
   }
 

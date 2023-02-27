@@ -86,6 +86,8 @@ public class SubjectController {
 		return new ResponseEntity<Subject>(s,HttpStatus.CREATED);	
 	}
 	
+	
+	
 
 	
 

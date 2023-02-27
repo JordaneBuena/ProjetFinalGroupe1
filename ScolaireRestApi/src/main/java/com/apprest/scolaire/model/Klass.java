@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,8 +37,8 @@ public class Klass {
 	private String name;
 	
 	
-	@JsonIgnore
-	@OneToOne
+	@JsonIgnoreProperties({"courses", "school", "subjects", "principalKlass"})
+	@OneToOne(cascade = {CascadeType.MERGE})
 	//@JoinColumn(name="teacher_id", referencedColumnName = "id")
 	//@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})
 	private Teacher principalTeacher;
