@@ -1,0 +1,14 @@
+.card-klass{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position:relative;
+  width:80vw;
+  height:40px;
+  /*background: rgba(255,255,255,0.06);*/
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  margin:24px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
