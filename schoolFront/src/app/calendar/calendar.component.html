@@ -56,29 +56,11 @@
     </button>
   </div>
   <div class="modal-body">
-    <form name="save-event" method="post">
-      <div class="form-group">
-          <label for="emptyTitle">Matière :</label>
-          <input type="text" name="title" placeholder="Matière" id="emptyTitle">
-      </div>
-      <div class="form-group">
-          <label for="emptyStart">Début : </label>
-          <input type="text" name="start" placeholder="Heure de Début" id="emptyStart">
-      </div>
-      <div class="form-group">
-          <label for="emptyEnd">Fin : </label>
-          <input type="text" name="end" placeholder="Heure de fin" id="emptyEnd">
-      </div>
-      <div class="form-group">
-          <label for="emptyDay">Jour : </label>
-          <input type="text" name="day" placeholder="Jour" id="emptyDay"><br>
-      </div>
-    </form>
+    <app-course-add [start]="eventStart" [end]="eventEnd" [day]="eventDay - 1" (outputVar)="closeModal()"></app-course-add>
 
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalRef?.hide()">Fermer</button>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
   </div>
 </ng-template>
 </div>

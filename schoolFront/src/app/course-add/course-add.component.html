@@ -1,0 +1,46 @@
+<ul *ngIf="formSubmitted">
+  <li></li>
+</ul>
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+  <div class="form-text">
+    <label for="start">Début : </label>
+    <input type="text" id="start" formControlName="start">
+  </div>
+  <div class="form-text">
+    <label for="end">Fin : </label>
+    <input type="text" id="end" formControlName="end">
+  </div>
+  <div>
+    <label for="day">Jour : </label>
+    <select type="select" id="day" formControlName="day">
+      <option class="text" value="0">Lundi</option>
+      <option class="text" value="1">Mardi</option>
+      <option class="text" value="2">Mercredi</option>
+      <option class="text" value="3">Jeudi</option>
+      <option class="text" value="4">Vendredi</option>
+    </select>
+  </div>
+  <div formGroupName="subject">
+    <label for="sId"> Matière : </label>
+    <select type select id="sId" formControlName="id">
+      <option class="text" *ngFor="let s of subjects" [value]="s.id">{{s.name}}</option>
+    </select>
+  </div>
+  <div formGroupName="teacher">
+    <label for="tId"> Professeur : </label>
+    <select type select id="tId" formControlName="id">
+      <option class="text" *ngFor="let t of teachers" [value]="t.id">{{t.lastName}} {{t.firstName}}</option>
+    </select>
+  </div>
+  <div formGroupName="classroom">
+    <label for="rId"> Salle : </label>
+    <select type select id="rId" formControlName="id">
+      <option class="text" *ngFor="let r of classrooms" [value]="r.id">{{r.name}}, capacité
+        : {{r.capacite}}</option>
+    </select>
+  </div>
+  <button class="btn btn-outline-info" type="submit">Ajouter</button>
+</form>
+
+{{myForm.value | json}}
+

@@ -6,9 +6,10 @@ import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
 import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {BsModalService, BsModalRef} from "ngx-bootstrap/modal";
 import {CourseService} from "../course.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Course} from "../../model/course.model";
 import {Days} from "../../model/days.enum";
+import {Klass} from "../../model/klass.model";
 
 @Component({
 
@@ -23,8 +24,14 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   title:any;
 
-  start : any;
-  end: any;
+  start: any
+  end: any
+  eventStart : string | undefined;
+  eventEnd: string | undefined;
+  eventDay!: number
+
+  @Input()
+  klass!: Klass;
 
   day : string = '';
   @Input() startInput : any;
@@ -69,12 +76,13 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   constructor(private modalService:BsModalService,
               private cServ: CourseService,
-              private route: ActivatedRoute){
+              private route: ActivatedRoute,
+              private router: Router){
   }
 
 
   ngOnInit():void{
-    const id = this.route.snapshot.paramMap.get("kId") || "";
+    const id = this.route.snapshot.paramMap.get('kId') || '';
     if (id != '') {
       this.cServ.findAll().subscribe(v => {
         this.courses = v.filter(c => c.klass.id === +id)
@@ -126,7 +134,13 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(this.templateInfo, this.config);
   }
 
- addEventClick(ard:any):void{
+ addEventClick(arg:any):void{
+    console.log(arg)
+    console.log(arg.end.toLocaleTimeString())
+    console.log(arg.end.getDay())
+   this.eventDay = arg.start.getDay()
+   this.eventStart = arg.start.toLocaleTimeString()
+   this.eventEnd = arg.end.toLocaleTimeString()
  //  this.modalRef = this.modalService.show('input[name=start]');
  //   this.modalRef = this.modalService.find('input[name=evtEnd]').val(
  //     this.end.format('YYYY-MM-DD HH:mm:ss')
@@ -150,7 +164,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   CoursesToEvents() {
-    let event = []
     this.courses.map(c => this.events.push(
       {
         title: c.subject.name,
@@ -160,5 +173,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         daysOfWeek: [Object.values(Days).indexOf(c.day) + 1]
       }
     ))
+  }
+  closeModal() {
+    this.modalRef?.hide()
+    this.router.navigate([this.router.url])
   }
 }
