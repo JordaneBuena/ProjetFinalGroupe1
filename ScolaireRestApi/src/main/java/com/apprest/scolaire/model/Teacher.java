@@ -44,7 +44,7 @@ public class Teacher {
 	private Date dateOfBirth;
 	
 	
-	@OneToMany(mappedBy = "teacher")
+	@OneToMany(mappedBy = "teacher", cascade=CascadeType.REMOVE)
 	@JsonIgnore
 	private List<Course> courses;
 	

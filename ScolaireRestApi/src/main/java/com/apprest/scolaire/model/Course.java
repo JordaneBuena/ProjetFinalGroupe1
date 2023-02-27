@@ -50,14 +50,15 @@ public class Course {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="teacher_id")
-//	@JsonIgnoreProperties("subjects")
-	@JsonIgnore
+	@JsonIgnoreProperties({"courses","school"})
+//	@JsonIgnore
 	private Teacher teacher;
 	
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name="classroom_id")
 //	@JsonIgnoreProperties("courses")
+	@JsonIgnoreProperties({"courses","school"})
 	@JsonIgnore
 	private Classroom classroom;
 	
@@ -65,20 +66,15 @@ public class Course {
 	@ManyToOne
 	@JoinColumn(name="subject_id")
 //	@JsonIgnoreProperties("courses")
-	@JsonIgnore
+	@JsonIgnoreProperties({"courses","school","teachers"})
+	//@JsonIgnore
 	private Subject subject;
 	
-	@NonNull
+	
+	
 	@ManyToOne
-	@JoinColumn(name="planning_id")
-//	@JsonIgnoreProperties("courses")
 	@JsonIgnore
-	private Planning planning;
-	
-	@ManyToOne
-	private School school;
-	
-	@ManyToOne
+	@JoinColumn(name="klass_id")
 	private Klass klass;
 	
 	
