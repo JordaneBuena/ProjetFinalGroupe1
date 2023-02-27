@@ -36,6 +36,7 @@ import {NgDragDropModule} from "ng-drag-drop";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { MenuComponent } from './menu/menu.component';
 import { CourseAddComponent } from './course-add/course-add.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -84,13 +85,14 @@ const routes: Routes = [
     CalendarComponent,
     TeacherSubjectModifyComponent,
     MenuComponent,
-    CourseAddComponent
+    CourseAddComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
+    RouterModule.forRoot(routes, {onSameUrlNavigation: "reload"}),
     ReactiveFormsModule,
     HttpClientModule,
     FullCalendarModule,

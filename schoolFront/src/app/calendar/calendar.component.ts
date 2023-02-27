@@ -25,6 +25,8 @@ import {Klass} from "../../model/klass.model";
 
   title:any;
 
+  clickedCourse!: Course
+
   start: any
   end: any
   eventStart : string | undefined;
@@ -80,7 +82,8 @@ import {Klass} from "../../model/klass.model";
   constructor(private modalService:BsModalService,
               private cServ: CourseService,
               private route: ActivatedRoute,
-              private router: Router){
+              private router: Router,
+              private courseServ: CourseService){
   }
 
 
@@ -102,40 +105,12 @@ import {Klass} from "../../model/klass.model";
   handleDateClick(arg:any){
     console.log(arg);
     console.log(arg.event._def.title);
-  this.title = arg.event._def.title;
-    this.start= arg.event.start;
-    this.end = arg.event.end;
-    this.day = arg.event._def.recurringDef.typeData.daysOfWeek[0];
-  switch(arg.event._def.recurringDef.typeData.daysOfWeek[0])
-  {
-    case '1': {
-      this.day = "Lundi";
-      break;
-    }
-    case '2': {
-      this.day = "Mardi";
-      break;
-    }
-  case '3': {
-      this.day = "Mercredi";
-      break;
-    }
-  case '4': {
-      this.day = "Jeudi";
-      break;
-    }
-  case '5': {
-      this.day = "Vendredi";
-      break;
-    }
-    default:
-      {
-        //statements;
-        break;
-      }
-    }
-
-    this.modalRef = this.modalService.show(this.templateInfo, this.config);
+    console.log(arg.event.start)
+    console.log(arg.event._def.publicId)
+    this.courseServ.findOne(arg.event._def.publicId).subscribe(v => {
+      this.clickedCourse = v
+      console.log(v)
+      this.modalRef = this.modalService.show(this.templateInfo, this.config)})
   }
 
  addEventClick(arg:any):void{
@@ -175,16 +150,23 @@ import {Klass} from "../../model/klass.model";
   CoursesToEvents() {
     this.courses.map(c => this.events.push(
       {
+        id: c.id,
         title: c.subject.name,
         startTime: c.start,
         endTime: c.end,
         backgroundColor: c.subject.color,
-        daysOfWeek: [Object.values(Days).indexOf(c.day) + 1]
+        daysOfWeek: [Object.values(Days).indexOf(c.day) + 1],
       }
     ))
   }
   closeModal() {
     this.modalRef?.hide()
     this.router.navigate([this.router.url])
+  }
+
+  deleteClickeddCourse() {
+    this.courseServ.delete(this.clickedCourse?.id).subscribe(() => {
+      this.closeModal()
+    })
   }
 }
