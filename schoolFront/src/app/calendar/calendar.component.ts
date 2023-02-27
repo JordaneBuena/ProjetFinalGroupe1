@@ -16,7 +16,8 @@ import {Days} from "../../model/days.enum";
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit, AfterViewInit {
+//export class CalendarComponent implements OnInit, AfterViewInit {
+  export class CalendarComponent implements OnInit {
 
   currentModal: NgbModalRef | undefined
   modalRef?: BsModalRef;
@@ -32,7 +33,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   courses: Course[] = []
 
+
   events: any[] = []
+
 
   container: any = this.events[0];
 
@@ -57,7 +60,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     selectable: true,
     eventSources: [{events: this.events}],
     eventClick: this.handleDateClick.bind(this),
-    select:this.addEventClick.bind(this)
+    select:this.addEventClick.bind(this),
+    eventDrop:this.dropEvent.bind(this),
+    eventResize:this.resizeEvent.bind(this)
   };
 
   config ={
@@ -77,7 +82,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     const id = this.route.snapshot.paramMap.get("kId") || "";
     if (id != '') {
       this.cServ.findAll().subscribe(v => {
-        this.courses = v.filter(c => c.klass.id === +id)
+        // this.courses = v.filter(c => c.klass.id === +id)
         console.log(v)
         console.log(Object.values(Days).indexOf(v[0].day) + 1)
         console.log(Object.values(Days).indexOf(v[1].day) + 1)
@@ -87,6 +92,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //Edit en event by clicking
   handleDateClick(arg:any){
     console.log(arg);
     console.log(arg.event._def.title);
@@ -126,15 +132,26 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(this.templateInfo, this.config);
   }
 
+  dropEvent(info:any):void{
+    if(!confirm("Etes-vous sûr.e de vouloir déplacer ce cours ?")){
+      info.revert(); }
+  }
+
+  resizeEvent(arg:any):void{
+    console.log(arg.event.end);
+  }
+
+  //add en event by clicking
  addEventClick(ard:any):void{
  //  this.modalRef = this.modalService.show('input[name=start]');
  //   this.modalRef = this.modalService.find('input[name=evtEnd]').val(
  //     this.end.format('YYYY-MM-DD HH:mm:ss')
  //   );
  //   show modal dialog
-   this.modalRef = this.modalService.show(this.templateAdd, this.config);}
+   this.modalRef = this.modalService.show(this.templateAdd, this.config);
+  }
 
-  ngAfterViewInit(): void {
+/*  ngAfterViewInit(): void {
     this.container = new ElementRef('external');
     new Draggable(this.container.nativeElement, {
       itemSelector: '.fc-event',
@@ -147,8 +164,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         };
       },
     });
-  }
-
+  }*/
   CoursesToEvents() {
     let event = []
     this.courses.map(c => this.events.push(
@@ -161,4 +177,5 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       }
     ))
   }
+
 }

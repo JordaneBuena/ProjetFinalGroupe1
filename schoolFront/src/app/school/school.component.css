@@ -84,3 +84,6 @@
 .btn{
   padding: 1px 5px;
 }
+h3{
+  cursor:pointer;
+}

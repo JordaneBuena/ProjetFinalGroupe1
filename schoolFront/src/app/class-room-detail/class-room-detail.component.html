@@ -1,6 +1,8 @@
-<h2>Détails de la salle</h2>
+<div class="corps">
+  <div class="detail">
+    <h2>Détails de la salle</h2>
 
-<div class="card w-50">
+<div class="card w-25">
   <h4 class="card-header">{{room?.name}}</h4>
   <div class="card-body">
     <div class="card-text">
@@ -21,6 +23,7 @@
 <div>
   <button type="button" class="btn btn-outline-info" routerLink="../">Retour vue salles</button>
 </div>
+  </div>
 
 
 <ng-template #content let-modal>
@@ -39,3 +42,4 @@
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">NON</button>
   </div>
 </ng-template>
+</div>

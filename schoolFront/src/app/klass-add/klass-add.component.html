@@ -1,32 +1,31 @@
 <div class="corps">
   <div class="container">
 
-  <form [formGroup]="myForm" (ngSubmit)="submitForm()">
-    <h1>Ajouter une nouvelle classe</h1>
-    <div class="text-danger">
-      <ul *ngIf="formSubmitted">
-        <li></li>
-      </ul>
-    </div>
-    <div class="field">
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <h1>Ajouter une nouvelle classe</h1>
+      <div class="text-danger">
+        <ul *ngIf="formSubmitted">
+          <li *ngIf="myForm.controls['name'].errors?.['required']">Le nom de la classe est requis</li>
+        </ul>
+      </div>
+      <div class="field">
         <label for="name">Nom de la classe</label>
         <input type="text" id="name" formControlName="name">
 
     </div>
       <form [formGroup]="myForm2" (ngSubmit)="submitForm()">
-      <div class="form-text">
-        <label for="principalTeacher" >Nom du Professeur Principal</label>
-        <select id="principalTeacher" formControlName="id">
-          <option class="lastName" *ngFor="let t of teachers" [value]="t.id">{{t.firstName}} {{t.lastName}}</option>
-        </select>
-      </div>
+        <div class="form-text">
+          <label for="principalTeacher">Nom du Professeur Principal</label>
+          <select id="principalTeacher" formControlName="id">
+            <option class="lastName" *ngFor="let t of teachers" [value]="t.id">{{t.firstName}} {{t.lastName}}</option>
+          </select>
+        </div>
       </form>
 
-
       <button class="btn btn-outline-info" type="submit">Ajouter</button>
-  </form>
-<!--  <pre>-->
-<!--      <p>myForm Klass{{myForm.value | json}} </p>-->
-<!--  </pre>-->
+    </form>
+    <!--  <pre>-->
+    <!--      <p>myForm Klass{{myForm.value | json}} </p>-->
+    <!--  </pre>-->
   </div>
-  </div>
+</div>
