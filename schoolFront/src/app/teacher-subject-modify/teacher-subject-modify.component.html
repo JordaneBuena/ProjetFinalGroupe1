@@ -8,7 +8,7 @@
   </div>
   <form [formGroup]="myForm" (ngSubmit)="submitForm()">
     <div class="card-body">
-      <div class="form-text">
+     <!-- <div class="form-text">
         <label for="id">Id</label>
         <input type="text" id="id" formControlName="id" >
       </div>
@@ -23,7 +23,7 @@
       <div>
         <label for="dateOfBirth">Date de naissance</label>
         <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
-      </div>
+      </div>-->
 
       <form [formGroup]="myForm3" (ngSubmit)="submitForm()">
       <div class="form-text"  >
@@ -98,6 +98,6 @@
     </div>
   </form>
 
-  {{myForm.value | json}}
+
 
 </div>
