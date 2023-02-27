@@ -1,0 +1,17 @@
+<header>
+
+<nav class="navbar">
+  <a href="#" class="logo">Team1</a>
+  <div class="navlinks" [class.is-open]="isMenuOpen">
+    <ul>
+      <li class="home"><a href="#">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Prices</a></li>
+      <li><a href="/team">Our Team</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+  <img src="assets/images/menu-btn.png" class="menu-hamburger" (click)="toggleMenu()">
+</nav>
+
+</header>

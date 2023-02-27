@@ -2,7 +2,13 @@ package com.apprest.scolaire.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class School {
 	
@@ -28,32 +34,35 @@ public class School {
 	private String name;
 	
 	@NonNull
-	private String adresse;
+	private String address;
 	
 	@NonNull
+	@Enumerated(EnumType.STRING)
 	private SchoolType type;
 	
 	@NonNull
-	private String tel;
+	private String phone;
 	
-
-	@OneToMany(mappedBy = "school")
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = {CascadeType.ALL})
+	@JsonIgnore
 	private List<Subject> subjects;
 	
 	
-
-	@OneToMany(mappedBy = "school")
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Classroom> classrooms;
 	
-//	@NonNull
-//	@OneToMany
-//	private List<Teacher> teachers;
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Teacher> teachers;
 	
-	
-
-	
-	
-	
+	@NonNull
+	@OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Klass> klasses;
 	
 
 }

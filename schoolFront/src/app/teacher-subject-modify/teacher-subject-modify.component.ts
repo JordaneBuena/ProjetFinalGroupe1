@@ -116,9 +116,9 @@ export class TeacherSubjectModifyComponent {
 
 
       this.myForm = this.fb.group({
-        id: [{value: this.teacher?.id || '', disabled: true}, Validators.required],
-        lastName: [{value: this.teacher?.lastName || '', disabled: true}, Validators.required],
-        firstName: [{value: this.teacher?.firstName || '', disabled: true}, Validators.required],
+        id: [{value: this.teacher?.id || ''}, Validators.required],
+        lastName: [{value: this.teacher?.lastName || ''}, Validators.required],
+        firstName: [{value: this.teacher?.firstName || ''}, Validators.required],
         dateOfBirth: [this.teacher?.dateOfBirth.setUTCDate || '', Validators.required],
         school: [{id: this.schoolId}],
         subjects: this.fb.array([
