@@ -5,6 +5,8 @@
     <div *ngIf="events.length > 0">
       <div class="fc-event" *ngFor="let ev of events" #external>
         <div class="card" cdkDrag>{{ev.title}}</div>
+
+        <!-- <div class="card" id="draggable-el" data-event='{ev.title:'my_event',"duration":"02:00"}'</div>-->
       </div>
     </div>
   </div>
