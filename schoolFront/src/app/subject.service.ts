@@ -20,7 +20,8 @@ export class SubjectService {
     return this.http.get<Subject>(`${this.url}/${id}`)
   }
 
-  add(value: SchoolModel): Observable<Subject> {
+  add(value: Subject): Observable<Subject> {
+    console.log(value)
     return this.http.post<Subject>(`${this.url}`,value)
   }
 

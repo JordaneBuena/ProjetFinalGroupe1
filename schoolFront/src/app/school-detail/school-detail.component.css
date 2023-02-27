@@ -4,7 +4,7 @@
 
 h1{
   text-align: center;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .corps{
@@ -14,7 +14,7 @@ h1{
 }
 
 .corps .container{
-  /*padding: 50px 50px;*/
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,6 +70,7 @@ h1{
 .button{
   display: flex;
   justify-content: center;
+  padding-top: 20px;
   /*padding-bottom: 20px;*/
 }
 
@@ -78,6 +79,7 @@ h1{
 
   color: #fdfd01;
   border-color: #fdfd01;
+
 }
 
 .button .btn:hover {
@@ -85,6 +87,10 @@ h1{
   background-color: rgba(253,253,1,0.45);
   border-color: rgba(253,253,1,0.45) ;
   color:whitesmoke;
+}
+
+.corps .container .card .danger{
+  transform: translateX(-9px);
 }
 
 

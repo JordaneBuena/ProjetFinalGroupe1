@@ -17,7 +17,8 @@ import {Klass} from "../../model/klass.model";
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit, AfterViewInit {
+//export class CalendarComponent implements OnInit, AfterViewInit {
+  export class CalendarComponent implements OnInit {
 
   currentModal: NgbModalRef | undefined
   modalRef?: BsModalRef;
@@ -64,7 +65,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     selectable: true,
     eventSources: [{events: this.events}],
     eventClick: this.handleDateClick.bind(this),
-    select:this.addEventClick.bind(this)
+    select:this.addEventClick.bind(this),
+    eventDrop:this.dropEvent.bind(this),
+    eventResize:this.resizeEvent.bind(this)
   };
 
   config ={
@@ -95,6 +98,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //Edit en event by clicking
   handleDateClick(arg:any){
     console.log(arg);
     console.log(arg.event._def.title);
@@ -141,14 +145,20 @@ export class CalendarComponent implements OnInit, AfterViewInit {
    this.eventDay = arg.start.getDay()
    this.eventStart = arg.start.toLocaleTimeString()
    this.eventEnd = arg.end.toLocaleTimeString()
- //  this.modalRef = this.modalService.show('input[name=start]');
- //   this.modalRef = this.modalService.find('input[name=evtEnd]').val(
- //     this.end.format('YYYY-MM-DD HH:mm:ss')
- //   );
  //   show modal dialog
-   this.modalRef = this.modalService.show(this.templateAdd, this.config);}
+   this.modalRef = this.modalService.show(this.templateAdd, this.config);
+  }
 
-  ngAfterViewInit(): void {
+   dropEvent(info:any):void{
+     if(!confirm("Etes-vous sûr.e de vouloir déplacer ce cours ?")){
+     info.revert(); }
+ }
+
+   resizeEvent(arg:any):void{
+     console.log(arg.event.end);
+   }
+
+/*  ngAfterViewInit(): void {
     this.container = new ElementRef('external');
     new Draggable(this.container.nativeElement, {
       itemSelector: '.fc-event',
@@ -161,8 +171,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         };
       },
     });
-  }
-
+  }*/
   CoursesToEvents() {
     this.courses.map(c => this.events.push(
       {

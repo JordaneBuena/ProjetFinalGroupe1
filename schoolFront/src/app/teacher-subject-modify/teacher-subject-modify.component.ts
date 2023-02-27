@@ -116,26 +116,26 @@ export class TeacherSubjectModifyComponent {
 
 
       this.myForm = this.fb.group({
-        id: [{value: this.teacher?.id || '', disabled: true}, Validators.required],
-        lastName: [{value: this.teacher?.lastName || '', disabled: true}, Validators.required],
-        firstName: [{value: this.teacher?.firstName || '', disabled: true}, Validators.required],
+        id: [{value: this.teacher?.id || ''}, Validators.required],
+        lastName: [{value: this.teacher?.lastName || ''}, Validators.required],
+        firstName: [{value: this.teacher?.firstName || ''}, Validators.required],
         dateOfBirth: [this.teacher?.dateOfBirth.setUTCDate || '', Validators.required],
         school: [{id: this.schoolId}],
         subjects: this.fb.array([
           this.myForm3 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
               //name: [this.subject1?.name || ''],
               //color: [this.subject1?.name || ''],
            // school: [this.subject1?.school || '']
           }),
           this.myForm4 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
            // name: [this.subject2?.name || ''],
            // color: [this.subject2?.name || ''],
            // school: [this.subject2?.school || '']
           }),
           this.myForm5 = this.fb.group({
-            id: [''],
+            id: ['', Validators.required],
            // name: [this.subject3?.name || ''],
            // color: [this.subject3?.name || ''],
            // school: [this.subject3?.school || '']

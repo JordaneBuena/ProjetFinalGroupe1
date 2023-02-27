@@ -73,7 +73,7 @@ public class Course {
 	
 	
 	@ManyToOne
-	@JsonIgnore
+	@JsonIgnoreProperties({"courses","school","principalTeacher"})
 	@JoinColumn(name="klass_id")
 	private Klass klass;
 	

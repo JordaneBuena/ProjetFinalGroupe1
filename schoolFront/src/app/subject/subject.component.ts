@@ -41,5 +41,22 @@ export class SubjectComponent {
     })
   }
 
+  getColor(){
+    if(this.subject?.color==='green'){
+      this.subject.color = 'rgba(0,255,0,0.35)';
+    }
+    if(this.subject?.color==='red'){
+      this.subject.color = 'rgba(255,0,0,0.35)';
+    }
+    if(this.subject?.color==='blue'){
+      this.subject.color = 'rgba(0,0,255,0.35)';
+    }
+    if(this.subject?.color==="white"){
+      this.subject.color = 'rgba(255,255,255,0.35)';
+    }
+    return this.subject?.color;
+
+  }
+
 
 }

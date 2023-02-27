@@ -1,22 +1,23 @@
-<div class="container d-flex h-100">
-  <div class="row align-self-center">
-    <div class="card-deck">
-      <div class="card">
-        <h1 class="card-header">Liste des matières</h1>
-        <div class="card-body">
-          <div *ngIf="subjects.length < 1">
-            Pas de Matière
+<div class="corps">
+  <div class="container d-flex justify-content-center">
+        <div class="card" style="width: 50rem;">
+          <h1 class="card-header">Liste des matières</h1>
+          <div class="card-body">
+            <div *ngIf="subjects.length < 1">
+              Pas de Matière
+            </div>
+            <div *ngIf="subjects.length > 0">
+              <app-subject *ngFor="let sub of subjects2" [subject]="sub"></app-subject>
+            </div>
           </div>
-          <div *ngIf="subjects.length > 0">
-            <app-subject *ngFor="let sub of subjects" [subject]="sub"></app-subject>
-          </div>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une matière</button>
+            <button type="button" class="btn btn-outline-info" routerLink="../">Retour</button>
 
-          <button type="submit" class="btn btn-outline-info" routerLink="./add">Ajouter une matière</button>
+<!--          <div *ngIf="subjects.length > 0">-->
+<!--            <app-subject *ngFor="let sub of subjects2" [subject]="sub"></app-subject>-->
+          </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
+

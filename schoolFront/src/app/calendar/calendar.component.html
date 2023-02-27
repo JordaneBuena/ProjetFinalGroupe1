@@ -1,10 +1,12 @@
-<div id="external-event" [style.margin-right]="'50px'" [style.margin-left]="'50px'">
+<div id="external-event" [style.padding-right]="'50px'" [style.padding-left]="'50px'">
 
   <h2 class="card card-header">Liste des cours</h2>
   <div class="external-event-list">
     <div *ngIf="events.length > 0">
-      <div class="fc-event" *ngFor="let ev of events" #external>
-        <div class="card" cdkDrag>{{ev.title}}</div>
+      <div class="fc-event" *ngFor="let c of courses" #external>
+        <div class="card" cdkDrag>{{c.subject.name}}</div>
+
+        <!-- <div class="card" id="draggable-el" data-event='{ev.title:'my_event',"duration":"02:00"}'</div>-->
       </div>
     </div>
   </div>
