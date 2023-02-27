@@ -29,7 +29,7 @@ export class SubjectAddComponent implements OnInit{
     if (this.myForm.valid) {
       this.sServ.add(this.myForm.value)
         .subscribe(s =>
-          this.router.navigateByUrl('/subjects'))
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute}))
     }
   };
 
@@ -48,6 +48,8 @@ export class SubjectAddComponent implements OnInit{
       color: [this.subject?.color || '', Validators.required],
       school: {id:this.id}
     })
+
+
   }
 
 }

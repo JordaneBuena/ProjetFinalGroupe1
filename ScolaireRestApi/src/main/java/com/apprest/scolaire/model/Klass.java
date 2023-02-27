@@ -48,6 +48,7 @@ public class Klass {
 	@ManyToOne
 	private School school;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "klass", cascade = CascadeType.ALL)
 	private List<Course> courses;
 	
