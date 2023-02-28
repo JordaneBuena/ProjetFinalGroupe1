@@ -64,6 +64,7 @@ public class Teacher {
 	
 	
 	@OneToOne(mappedBy = "principalTeacher")
+	@JsonIgnore
 	private Klass principalKlass;
 	
 }

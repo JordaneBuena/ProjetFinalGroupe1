@@ -37,7 +37,7 @@ public class Klass {
 	private String name;
 	
 	
-	@JsonIgnoreProperties({"courses", "school", "subjects", "principalKlass"})
+	@JsonIgnoreProperties({"courses", "school", "subjects","principalKlass"})
 	@OneToOne(cascade = {CascadeType.MERGE})
 	//@JoinColumn(name="teacher_id", referencedColumnName = "id")
 	//@JsonIgnoreProperties({"school","courses","principaleKlass","dateOfBirth"})

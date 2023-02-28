@@ -36,6 +36,7 @@ public class Classroom {
 	
 //	@NonNull
 	@ManyToMany
+	@JsonIgnoreProperties("courses")
 	private List<Subject> subjectsExcluded;
 	
 

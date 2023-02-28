@@ -18,12 +18,14 @@ import {Klass} from "../../model/klass.model";
   styleUrls: ['./calendar.component.css']
 })
 //export class CalendarComponent implements OnInit, AfterViewInit {
-  export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit {
 
   currentModal: NgbModalRef | undefined
   modalRef?: BsModalRef;
 
   title:any;
+
+  clickedCourse!: Course
 
   start: any
   end: any
@@ -80,7 +82,8 @@ import {Klass} from "../../model/klass.model";
   constructor(private modalService:BsModalService,
               private cServ: CourseService,
               private route: ActivatedRoute,
-              private router: Router){
+              private router: Router,
+              private courseServ: CourseService){
   }
 
 
@@ -102,84 +105,57 @@ import {Klass} from "../../model/klass.model";
   handleDateClick(arg:any){
     console.log(arg);
     console.log(arg.event._def.title);
-  this.title = arg.event._def.title;
-    this.start= arg.event.start;
-    this.end = arg.event.end;
-    this.day = arg.event._def.recurringDef.typeData.daysOfWeek[0];
-  switch(arg.event._def.recurringDef.typeData.daysOfWeek[0])
-  {
-    case '1': {
-      this.day = "Lundi";
-      break;
-    }
-    case '2': {
-      this.day = "Mardi";
-      break;
-    }
-  case '3': {
-      this.day = "Mercredi";
-      break;
-    }
-  case '4': {
-      this.day = "Jeudi";
-      break;
-    }
-  case '5': {
-      this.day = "Vendredi";
-      break;
-    }
-    default:
-      {
-        //statements;
-        break;
-      }
-    }
-
-    this.modalRef = this.modalService.show(this.templateInfo, this.config);
+    console.log(arg.event.start)
+    console.log(arg.event._def.publicId)
+    this.courseServ.findOne(arg.event._def.publicId).subscribe(v => {
+      this.clickedCourse = v
+      console.log(v)
+      this.modalRef = this.modalService.show(this.templateInfo, this.config)})
   }
 
- addEventClick(arg:any):void{
+  addEventClick(arg:any):void{
     console.log(arg)
     console.log(arg.end.toLocaleTimeString())
     console.log(arg.end.getDay())
-   this.eventDay = arg.start.getDay()
-   this.eventStart = arg.start.toLocaleTimeString()
-   this.eventEnd = arg.end.toLocaleTimeString()
- //   show modal dialog
-   this.modalRef = this.modalService.show(this.templateAdd, this.config);
+    this.eventDay = arg.start.getDay()
+    this.eventStart = arg.start.toLocaleTimeString()
+    this.eventEnd = arg.end.toLocaleTimeString()
+    //   show modal dialog
+    this.modalRef = this.modalService.show(this.templateAdd, this.config);
   }
 
-   dropEvent(info:any):void{
-     if(!confirm("Etes-vous sûr.e de vouloir déplacer ce cours ?")){
-     info.revert(); }
- }
+  dropEvent(info:any):void{
+    if(!confirm("Etes-vous sûr.e de vouloir déplacer ce cours ?")){
+      info.revert(); }
+  }
 
-   resizeEvent(arg:any):void{
-     console.log(arg.event.end);
-   }
+  resizeEvent(arg:any):void{
+    console.log(arg.event.end);
+  }
 
-/*  ngAfterViewInit(): void {
-    this.container = new ElementRef('external');
-    new Draggable(this.container.nativeElement, {
-      itemSelector: '.fc-event',
-      eventData: (eventEl) => {
-        console.log(eventEl);
-        this.title = eventEl.getAttribute("title");
+  /*  ngAfterViewInit(): void {
+      this.container = new ElementRef('external');
+      new Draggable(this.container.nativeElement, {
+        itemSelector: '.fc-event',
+        eventData: (eventEl) => {
+          console.log(eventEl);
+          this.title = eventEl.getAttribute("title");
 
-        return {
-          title: eventEl.innerText,
-        };
-      },
-    });
-  }*/
+          return {
+            title: eventEl.innerText,
+          };
+        },
+      });
+    }*/
   CoursesToEvents() {
     this.courses.map(c => this.events.push(
       {
+        id: c.id,
         title: c.subject.name,
         startTime: c.start,
         endTime: c.end,
         backgroundColor: c.subject.color,
-        daysOfWeek: [Object.values(Days).indexOf(c.day) + 1]
+        daysOfWeek: [Object.values(Days).indexOf(c.day) + 1],
       }
     ))
   }
@@ -187,4 +163,11 @@ import {Klass} from "../../model/klass.model";
     this.modalRef?.hide()
     this.router.navigate([this.router.url])
   }
+
+  deleteClickeddCourse() {
+    this.courseServ.delete(this.clickedCourse?.id).subscribe(() => {
+      this.closeModal()
+    })
+  }
 }
+

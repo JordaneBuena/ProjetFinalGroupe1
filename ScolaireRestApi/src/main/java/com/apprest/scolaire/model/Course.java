@@ -59,7 +59,7 @@ public class Course {
 	@JoinColumn(name="classroom_id")
 //	@JsonIgnoreProperties("courses")
 	@JsonIgnoreProperties({"courses","school"})
-	@JsonIgnore
+//	@JsonIgnore
 	private Classroom classroom;
 	
 	@NonNull

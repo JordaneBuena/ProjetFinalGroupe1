@@ -7,6 +7,7 @@ import {environment} from "../environments/environment.development";
 import {Teacher} from "../model/teacher.model";
 import {Subject} from "../model/subject.model";
 import {Klass} from "../model/klass.model";
+import {ClassRoom} from "../model/classRoom.model";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,10 @@ export class SchoolService {
 
   findAllKlassesBySchool(id: number): Observable<Klass[]> {
     return this.http.get<Klass[]>(`${this.url}/${id}/classes`)
+  }
+
+  findAllClassroomsBySchool(id: number): Observable<ClassRoom[]> {
+    return this.http.get<ClassRoom[]>(`${this.url}/${id}/salles`)
   }
 
 

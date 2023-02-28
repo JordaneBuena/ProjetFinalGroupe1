@@ -1,9 +1,13 @@
+<div class="corps">
+  <div class="detail">
+
 <div class="card w-50">
 
   <h1 class="card-header">Ajout de salles</h1>
   <div class="text-danger">
-    <ul *ngIf="!formSubmitted">
-      <li></li>
+    <ul *ngIf="formSubmitted">
+      <li *ngIf="myForm.controls['name'].errors?.['required']">Le nom de la salle est requis</li>
+      <li *ngIf="myForm.controls['capacite'].errors?.['required']">La capacité de la salle est requise</li>
     </ul>
   </div>
   <form [formGroup]="myForm" (ngSubmit)="submitForm()">
@@ -29,4 +33,7 @@
     </div>
   </form>
 </div>
-Checkbox values: {{ myForm.value | json}}
+
+  </div>
+</div>
+<!--Checkbox values: {{ myForm.value | json}}-->

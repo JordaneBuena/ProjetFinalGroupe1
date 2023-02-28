@@ -43,6 +43,9 @@ public class SchoolController {
 	@Autowired
 	KlassDao klassDao;
 	
+	@Autowired
+	ClassroomDao classroomDao;
+	
 	
 	@GetMapping({"","/"})
 	public ResponseEntity<List<School>> findAll(){
@@ -67,6 +70,10 @@ public class SchoolController {
 	@GetMapping("/{id}/classes")
 	public ResponseEntity<List<Klass>> findKlassesBySchoolId(@PathVariable Integer id) {
 		return new ResponseEntity<List<Klass>>(klassDao.findByIdSchool(id), HttpStatus.OK);}
+	
+	@GetMapping("/{id}/salles")
+	  public ResponseEntity<List<Classroom>> findClassroomBySchoolId(@PathVariable Integer id) {
+	    return new ResponseEntity<List<Classroom>>(classroomDao.findByIdSchool(id), HttpStatus.OK);}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteOne(@PathVariable Integer id) { 

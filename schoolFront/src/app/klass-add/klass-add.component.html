@@ -14,18 +14,22 @@
 
     </div>
       <form [formGroup]="myForm2" (ngSubmit)="submitForm()">
-        <div class="form-text">
+        <div class="field">
           <label for="principalTeacher">Nom du Professeur Principal</label>
           <select id="principalTeacher" formControlName="id">
             <option class="lastName" *ngFor="let t of teachers" [value]="t.id">{{t.firstName}} {{t.lastName}}</option>
           </select>
         </div>
+
       </form>
 
       <button class="btn btn-outline-info" type="submit">Ajouter</button>
     </form>
-    <!--  <pre>-->
-    <!--      <p>myForm Klass{{myForm.value | json}} </p>-->
-    <!--  </pre>-->
+<!--    <pre>-->
+<!--          {{myForm2|json}}-->
+<!--    </pre>-->
+<!--      <pre>-->
+<!--          <p>myForm Klass{{myForm.value | json}} </p>-->
+<!--      </pre>-->
   </div>
 </div>

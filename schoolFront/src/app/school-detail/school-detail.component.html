@@ -10,22 +10,22 @@
           <li><span>Tel : </span>{{school?.phone}} </li>
         </ul>
         <ul>
-          <li>Nombre de professeurs : <br>
+          <li>Nombre de professeurs : {{teachers?.length}} <br>
             <button type="button" class="btn btn-outline-primary" routerLink="/schools/{{school?.id}}/teachers">
               Gérer les professeurs
             </button>
           </li>
-          <li>Nombre de matières : <br>
+          <li>Nombre de matières : {{subjects?.length}}<br>
             <button type="button" class="btn btn-outline-primary" routerLink="/schools/{{school?.id}}/subjects">
               Gérer les matières
             </button>
           </li>
-          <li>Nombre de classes :<br>
+          <li>Nombre de classes : {{klasses?.length}}<br>
             <button type="button" class="btn btn-outline-primary" routerLink="/schools/{{school?.id}}/klasses">
               Gérer les classes
             </button>
           </li>
-          <li>Nombre de salles de classe :<br>
+          <li>Nombre de salles de classe : {{classrooms?.length}}<br>
             <button type="button" class="btn btn-outline-primary" routerLink="/schools/{{school?.id}}/rooms">
               Gérer les salles
             </button>
